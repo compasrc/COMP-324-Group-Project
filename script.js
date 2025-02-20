@@ -35,5 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Attach an event listener to the "Burn" button.
     // Whenever the button is clicked, call 'burnMessage'.
     burnButton.addEventListener("click", burnMessage);
+
+    // Enter key functionality
+    messageInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter"){
+        e.preventDefault();
+        burnMessage();
+      }
+    });
   });
   
