@@ -105,3 +105,13 @@ body {
   text-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px orangered;
   animation: fireGlow 0.5s infinite alternate;
 }
+
+.burned-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: orangered;
+  transition: opacity 1.5s ease-out;
+}
