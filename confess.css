@@ -71,6 +71,7 @@ body {
 /* Burn button */
 .send-btn {
   background: silver;
+  font: 'Orbitron';
   color: black;
   border: none;
   cursor: pointer;
@@ -86,11 +87,11 @@ body {
   background: orangered;
 }
 
-/* Fire button style for the "About" link */
+/* Fire button style for the "Home" link */
 .fire-button {
   color: orangered;
   font-size: 18px;
-  text-decoration: none;
+  /* text-decoration: none; */
   font-weight: bold;
   padding: 8px 15px;
   border-radius: 5px;

@@ -261,7 +261,7 @@ img {
   }
 
   .mission-container__text {
-    font-size: 1.1rem;
+    font-size: 1.1rem; 
   }
 
   .mission-container__image {
@@ -326,7 +326,7 @@ img {
 
 .container1__button {
   padding: 1rem 2rem;
-  background-color: red;
+  background-color: rgb(39, 37, 37);
   color: white;
   text-transform: uppercase;
   border-radius: 5px;
@@ -337,7 +337,7 @@ img {
 }
 
 .container1__button:hover {
-  background-color: darkred;
+  background-color: orangered;
 }
 
 /* Media Query for Tablets and Smaller Screens */
@@ -414,120 +414,6 @@ img {
   }
 }
 
-/*CONTAINER2*/
-
-/* Container Style */
-.container2 {
-  display: flex;
-  flex-direction: column; /* Stack title/content and videos */
-  width: 100%;
-  max-width: 1400px;
-  margin: 2rem auto;
-  background-color: grey;
-  border-radius: 15px;
-  overflow: hidden;
-  padding: 40px;
-  box-sizing: border-box; /* Ensure padding doesn't push content outside */
-  padding-left: 20px; /* Added padding to the left */
-  padding-right: 20px; /* Added padding to the right */
-}
-
-/* Left Side Title */
-.container2__content {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* background-color: rgba(0, 0, 0, 0.3); Light dark overlay for content */
-  border-radius: 10px; /* Rounded corners */
-  margin-bottom: 20px; /* Space between content and video section */
-}
-
-.container2__title {
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 1rem;
-}
-
-.container2__description {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: hsl(0, 0%, 80%);
-  margin-bottom: 2rem;
-}
-
-/* Right Side (Swiper Container) */
-.container2__videos {
-  width: 100%;
-  height: 200px;
-  position: relative;
-  padding-top: px; /* Space between content and swiper */
-}
-
-/* Adjust Swiper container to fill space properly */
-.swiper-container {
-  width: 100%;
-  height: 100%;
-  padding-left: 10px; /* Padding on left side of swiper */
-  padding-right: 10px; /* Padding on right side of swiper */
-}
-
-/* Style for each slide */
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for video slides */
-  margin: 10px;
-}
-
-/* Positioning the swiper buttons */
-.swiper-button-next, .swiper-button-prev {
-  color: white;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 50%;
-}
-
-/* Next Button Position */
-.swiper-button-next {
-  right: 10px;
-}
-
-/* Previous Button Position */
-.swiper-button-prev {
-  left: 10px;
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
-  .container2 {
-    padding: 20px;
-  }
-
-  /* Adjust font size for title and description */
-  .container2__title {
-    font-size: 2.5rem;
-  }
-
-  .container2__description {
-    font-size: 1rem;
-  }
-
-  /* Adjust buttons for smaller screens */
-  .swiper-button-next, .swiper-button-prev {
-    top: 50%;
-    font-size: 18px;
-  }
-}
 
 
 
