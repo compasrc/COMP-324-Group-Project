@@ -1,64 +1,56 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Code inside here will only run after the entire HTML document (DOM) is loaded
-  // ensuring that we can safely access elements by ID or class.
+/*=============== SHOW MENU ===============*/
+const navMenu = document.getElementById('nav-menu'),
+      navToggle = document.getElementById('nav-toggle'),
+      navClose = document.getElementById('nav-close')
 
-  const messageInput = document.getElementById("messageInput");
-  // 'messageInput' references the <textarea> element where the user types their message.
+if(navToggle){
+    navToggle.addEventListener('click', () =>{
+        navMenu.classList.add('show-menu')
+    })
+}
+if(navClose){
+    navClose.addEventListener('click', () =>{
+        navMenu.classList.remove('show-menu')
+    })
+}
 
-  const burnButton = document.querySelector(".send-btn");
-  // 'burnButton' references the "Burn" button (the first element with class "send-btn").
+const navLink = document.querySelectorAll('.nav__link')
 
-  const counterSpan = document.getElementById("counter");
-  // 'counterSpan' references the <span> element inside <div id="confessionCounter">
-  // where the counter number is displayed.
+const linkAction = () =>{
+    const navMenu = document.getElementById('nav-menu')
+    navMenu.classList.remove('show-menu')
+}
+navLink.forEach(n => n.addEventListener('click',linkAction))
 
-  function burnMessage() {
-    // This function is called whenever the user clicks the "Burn" button.
-    //   Checking if the textbox is not empty.
-    if (messageInput.value.trim() === "") {
-      alert("Enter something in the textfield");
-      return;
-    }
-
-    // Store the message text and clear the input field
-    let messageText = messageInput.value;
-    messageInput.value = "";
-
-
-    //New div  element to display the burning message
-    let burnedMessage = document.createElement("div");
-
-    // Class for styling
-    burnedMessage.classList.add("burned-message");
-
-    // Set the text content to the user's message
-    burnedMessage.textContent = messageText;
-
-    // Add the message to the document
-    document.body.appendChild(burnedMessage);
-
-
-    // Message stays visible for 1.5 seconds
-    setTimeout(() => {
-      burnedMessage.style.opacity = "0";
-    }, 1500);
-
-    // Fully disappears after 3 seconds and increment the counter
-    setTimeout(() => {
-      burnedMessage.remove();
-      counterSpan.textContent = parseInt(counterSpan.textContent) + 1;
-    }, 3000);
-  }
-
-  // Attach an event listener to the "Burn" button.
-  // Whenever the button is clicked, call 'burnMessage'.
-  burnButton.addEventListener("click", burnMessage);
-
-  // Enter key functionality
-  messageInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      burnMessage();
-    }
+// Using GSAP for container animations
+gsap.from(".box-container", {
+    duration: 1,
+    opacity: 0,
+    scale: 0.5,
+    stagger: 0.2,
+    delay: 0.5, // Optional: Add delay for sequential animation
+    ease: "power3.out"
   });
+
+  
+  // Initialize Swiper
+  const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        }
+    }
 });
+
+  

@@ -1,0 +1,107 @@
+/* Importing Orbitron font style */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+/* Basic page styling */
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  /* Use flexbox to center the main content vertically & horizontally */
+  display: flex;
+  flex-direction: column;      /* Stack items vertically in the body */
+  align-items: center;         /* Center items horizontally */
+  justify-content: center;     
+  height: 100vh;           
+  margin: 10px;
+  text-align: center;
+}
+
+/* "About" link in the top-left corner */
+.about-link {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
+
+/* Counter in the top-right corner */
+#confessionCounter {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  font-size: 18px;
+  color: white;
+}
+
+/* Title at the top (in normal flow, so it remains centered above the box) */
+.title {
+  font-size: 48px;
+  color: orangered;
+  text-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+  top: 50px; 
+     /* Add some space from the very top */
+}
+
+/* The box containing the textarea and button */
+.message-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  width: 500px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  margin-top: 50px; /* Space below the title */
+}
+
+/* The textarea styling */
+#messageInput {
+  width: 100%;
+  height: 200px;
+  background: black;
+  color: white;
+  border: 1px solid silver;
+  padding: 15px;
+  font-size: 18px;
+  font-family: sans-serif;
+  resize: none;
+  margin-bottom: 15px;  /* Space above the button */
+}
+
+/* Burn button */
+.send-btn {
+  background: silver;
+  color: black;
+  border: none;
+  cursor: pointer;
+  width: 70%;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.send-btn:hover {
+  background: orangered;
+}
+
+/* Fire button style for the "About" link */
+.fire-button {
+  color: orangered;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.fire-button:hover {
+  color: white;
+  text-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px orangered;
+  animation: fireGlow 0.5s infinite alternate;
+}
