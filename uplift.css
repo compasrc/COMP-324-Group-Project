@@ -1,0 +1,159 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #e6f3fa, #ffffff);
+    color: #2c3e50;
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2980b9;
+  }
+  
+  .navbar nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .navbar nav a:hover {
+    color: #2980b9;
+  }
+  
+  /* Main Content */
+  .main-content {
+    padding: 230px 20px;
+  }
+  
+  /* Card */
+  .card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin: auto;
+    max-width: 700px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+  
+  .quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: #34495e;
+    margin-bottom: 30px;
+  }
+  
+  /* Buttons */
+  .save-button,
+  .new-button {
+    background-color: white;
+    color: #2980b9;
+    border: 2px solid #2980b9;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .save-button:hover,
+  .new-button:hover {
+    background-color: #2980b9;
+    color: white;
+  }
+  
+  /* New Affirmation Button */
+  .new-button {
+    margin-top: 40px;
+  }
+  
+  /* Footnote */
+  .footnote {
+    margin-top: 220px;
+    font-size: 0.95rem;
+    color: #888;
+  }
+  
+  .header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #d0e6f7;
+    z-index: 100;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+  }
+  
+  .nav__logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2980b9;
+    letter-spacing: 2px;
+  }
+  
+  .nav__logo:hover {
+    color: #1a5276;
+  }
+  
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .nav__list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+  
+  .nav__link {
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .nav__link:hover {
+    color: #2980b9;
+  }
+  
+  .nav__social {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav__social-links {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    transition: color 0.3s;
+  }
+  
+  .nav__social-links:hover {
+    color: #2980b9;
+  }
+  
+  .nav__close, .nav__toggle {
+    display: none; /* optional if you’re not using mobile menu toggle */
+  }
+  
