@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Audio files for website
   const burnSound = new Audio("fire.mp3");
-  const whisper = new Audio("whisper.mp3");
-  whisper.volume = 0.3;
+
   burnSound.volume = 0.5;
 
   let istyping = false;
@@ -18,29 +17,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function burnMessage() {
     if (messageInput.value === "") {
-      alert("Enter something in the textfield");
-      return;
+        alert("Enter something in the textfield");
+        return;
     }
 
-    // Pause + reset whisper sound
-    whisper.pause();
-    whisper.currentTime = 0;
+    /*
+     * Use AudioContext API for precise timing of burn effect and fire sound.
+     * Some browsers use webkitAudioContext instead, so it is included as well.
+     */
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioElement = burnSound;
+    const track = audioContext.createMediaElementSource(audioElement);
 
-    // Promise for burn sound and glow effect
-    burnSound.play().then(() => {
-      setTimeout(() => {
-        glowEffect();
+    // Connect the audio track to the destination (speakers)
+    track.connect(audioContext.destination);
+    
+    // Use promise to start the burn sound and glow effect at the same time
+    audioContext.resume().then(() => {
+      burnSound.play();
+      glowEffect();
+    });
 
-        setTimeout(() => {
-          messageInput.value = "";
-        }, 800);
+    // Wait for the glow effect to complete
+    setTimeout(() => {
+        messageInput.value = "";
 
         let currentCount = parseInt(counterSpan.textContent);
         counterSpan.textContent = currentCount + 1;
-      });
-    }).catch((error) => {
-      console.error("Error playing sound:", error);
-    });
+    }, 600);
   }
 
   const screenGlow = document.querySelector(".screen-glow");
