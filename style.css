@@ -591,3 +591,45 @@ footer {
     opacity: 1;
   }
 }
+
+/* Fiery animation for 'Confess' nav link */
+.nav__link--fire {
+  color: white; /* Default text color */
+  animation: fireFlicker 1.5s infinite;
+  font-weight: bold;
+}
+
+.nav__link--fire:hover {
+  color: orangered; /* Change color on hover */
+}
+
+/* Keyframes for the fiery flicker effect */
+@keyframes fireFlicker {
+  0% {
+    text-shadow: 
+      0 0 10px #ff4500, 
+      0 0 20px #ff6347, 
+      0 0 30px #ff4500, 
+      0 0 40px #ff6347, 
+      0 0 50px #ff4500, 
+      0 0 60px #ff6347;
+  }
+  50% {
+    text-shadow: 
+      0 0 20px #ff6347, 
+      0 0 40px #ff4500, 
+      0 0 60px #ff6347, 
+      0 0 80px #ff4500, 
+      0 0 100px #ff6347, 
+      0 0 120px #ff4500;
+  }
+  100% {
+    text-shadow: 
+      0 0 10px #ff4500, 
+      0 0 20px #ff6347, 
+      0 0 30px #ff4500, 
+      0 0 40px #ff6347, 
+      0 0 50px #ff4500, 
+      0 0 60px #ff6347;
+  }
+}
