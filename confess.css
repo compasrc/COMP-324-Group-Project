@@ -1,29 +1,28 @@
-/* Importing Orbitron font style */
+/* Import Orbitron font */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
-/* B`c page styling */
+/* === General Page Styles === */
 body {
   background-color: black;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  /* Use flexbox to center the main content vertically & horizontally */
   display: flex;
-  flex-direction: column;      /* Stack items vertically in the body */
-  align-items: center;         /* Center items horizontally */
-  justify-content: center;     
-  height: 100vh;           
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   margin: 10px;
   text-align: center;
 }
 
-/* "About" link in the top-left corner */
+/* Top Left "About" Link */
 .about-link {
   position: absolute;
   top: 30px;
   left: 20px;
 }
 
-/* Counter in the top-right corner */
+/* Top Right Counter */
 #confessionCounter {
   position: absolute;
   top: 30px;
@@ -32,29 +31,27 @@ body {
   color: white;
 }
 
-/* Title at the top (in normal flow, so it remains centered above the box) */
+/* Title at top center */
 .title {
   font-size: 48px;
   color: orangered;
   text-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
-  top: 50px; 
-     /* Add some space from the very top */
 }
 
-/* The box containing the textarea and button */
+/* Main Message Box */
 .message-box {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.1);
   padding: 30px;
   border-radius: 15px;
   width: 500px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  margin-top: 50px; /* Space below the title */
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 }
 
-/* The textarea styling */
+/* Textarea */
 #messageInput {
   width: 100%;
   height: 200px;
@@ -65,13 +62,30 @@ body {
   font-size: 18px;
   font-family: sans-serif;
   resize: none;
-  margin-bottom: 15px;  /* Space above the button */
+  margin-bottom: 15px;
 }
 
-/* Burn button */
+/* === Burn & Mic Button Row === */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 15px;
+}
+
+/* Mic group includes mic + dropdown stacked */
+.mic-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Burn Button */
 .send-btn {
   background: silver;
-  font: 'Orbitron';
+  font-family: 'Orbitron', sans-serif;
   color: black;
   border: none;
   cursor: pointer;
@@ -80,58 +94,80 @@ body {
   font-weight: bold;
   padding: 10px 20px;
   border-radius: 5px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+  transition: background 0.3s;
 }
-
 .send-btn:hover {
   background: orangered;
-}
-
-/* Fire button style for the "Home" link */
-.fire-button {
-  color: orangered;
-  font-size: 18px;
-  /* text-decoration: none; */
-  font-weight: bold;
-  padding: 8px 15px;
-  border-radius: 5px;
-  position: relative;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  display: inline-block;
-}
-
-.fire-button:hover {
   color: white;
-  text-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px orangered;
-  animation: fireGlow 0.5s infinite alternate;
 }
 
+/* Mic Button */
+#mic-btn {
+  background-color: silver;
+  width: 55%;
+  border: none;
+  color: black;
+  font-size: 20px;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: background 0.3s;
+}
+#mic-btn:hover {
+  background-color: orangered;
+  color: white;
+}
+
+/* Language Dropdown under mic */
+.language-selector label {
+  color: white;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.language-selector select {
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 13px;
+  background-color: #333;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  width: 110px;
+  text-align: center;
+}
+.language-selector select:hover {
+  background-color: #555;
+}
+
+/* Sidebar Styling */
 .sidebar {
   position: fixed;
   right: 100px;
   top: 50%;
   transform: translateY(-50%);
   width: 250px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.1);
   color: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: -2px 2px 15px rgba(255, 255, 255, 0.2);
+  box-shadow: -2px 2px 15px rgba(255,255,255,0.2);
   font-family: 'Orbitron', sans-serif;
   text-align: center;
-
 }
-
 .sidebar h2 {
   font-weight: bold;
   font-size: 22px;
   color: orangered;
-  text-shadow: 0 0 10px rgba(255, 69, 0, 0.8);
+  text-shadow: 0 0 10px rgba(255,69,0,0.8);
 }
 
+/* Glow Animation for Screen Burn */
 .screen-glow {
-  position: fixed; /* fixed so it covers the screen */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -142,8 +178,35 @@ body {
   pointer-events: none;
   z-index: -1;
 }
-
 .screen-glow.active {
   opacity: 0.7;
 }
 
+/* Home (Fire) Button */
+.fire-button {
+  color: orangered;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
+  display: inline-block;
+}
+.fire-button:hover {
+  color: white;
+  text-shadow: 0 0 10px orange, 0 0 20px red, 0 0 30px orangered;
+  animation: fireGlow 0.5s infinite alternate;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .message-box {
+    width: 90vw;
+    padding: 10px;
+  }
+  .sidebar {
+    display: none;
+  }
+}

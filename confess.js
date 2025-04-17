@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const messageInput = document.getElementById("messageInput");
   const burnButton = document.querySelector(".send-btn");
+  const micButton = document.getElementById("mic-btn");
   const counterSpan = document.getElementById("counter");
 
   // Audio files for website
@@ -60,4 +61,54 @@ document.addEventListener("DOMContentLoaded", function () {
       burnMessage();
     }
   });
+
+// 🎤 Speech-to-Text Functionality
+let recognition;
+let isListening = false;
+
+micButton.addEventListener("click", () => {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Speech recognition not supported in this browser.");
+    return;
+  }
+
+  if (!recognition) {
+    recognition = new SpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.continuous = true; // Keeps listening until YOU stop it
+
+    recognition.onresult = function (event) {
+      const transcript = event.results[event.results.length - 1][0].transcript;
+      messageInput.value += (messageInput.value ? " " : "") + transcript;
+    };
+
+    recognition.onerror = function (event) {
+      console.error("Speech recognition error:", event.error);
+      isListening = false;
+      micButton.textContent = "🎤";
+    };
+
+    recognition.onend = function () {
+      if (isListening) recognition.start(); // 🔁 Auto-restart if it randomly ends
+    };
+  }
+
+   // Set language before starting mic
+   const selectedLang = languageSelect.value;
+   recognition.lang = selectedLang;
+
+  if (!isListening) {
+    recognition.start();
+    isListening = true;
+    micButton.textContent = "🔴 Stop";
+  } else {
+    recognition.stop();
+    isListening = false;
+    micButton.textContent = "🎤";
+  }
+});
+
 });
