@@ -7,6 +7,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const micButton = document.getElementById("mic-btn");
   const counterSpan = document.getElementById("counter");
 
+  // Intro‑Popup Logic & Quick‑Intro Trigger
+  const introPopup    = document.getElementById("introPopup");
+  const introCloseBtn = document.getElementById("introCloseBtn");
+  const introTrigger  = document.getElementById("introTrigger");
+
+  introTrigger.addEventListener("click", function (e) {
+    e.preventDefault();
+    introPopup.classList.remove("hidden");
+  });
+
+  introCloseBtn.addEventListener("click", function () {
+    introPopup.classList.add("hidden");
+  });
+
   // Audio files for website
   const burnSound = new Audio("fire.mp3");
 
