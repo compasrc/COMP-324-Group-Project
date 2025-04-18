@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Unburdening</title>
- 
+
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="confess.css" />
 </head>
+
 <body>
- 
-    <!-- About page link (top-left) -->
+
+  <!-- Intro Popup Markup -->
+  <div id="introPopup" class="intro-popup hidden">
+    <div class="intro-content">
+      <h2>Welcome to The Unburdening</h2>
+      <p>
+        Here you can anonymously “burn” your thoughts away.
+        Type or speak your message, hit Burn, and watch it vanish in flames.
+      </p>
+      <button id="introCloseBtn">Got it!</button>
+    </div>
+  </div>
+
+
+  <!-- About page link (top-left) -->
   <div class="about-link">
     <a href="home.html" class="fire-button">Home</a>
   </div>
@@ -23,13 +38,19 @@
   <!-- Title at the top (center) -->
   <div class="title">Burn Confessions</div>
 
+  <!-- Quick‑Intro Trigger -->
+  <div class="intro-notice">
+    <a href="#" id="introTrigger">New here? Quick guide</a>
+  </div>
+
+
   <!-- Message box in the center -->
   <div class="message-box">
     <textarea id="messageInput" placeholder="Write your message..."></textarea>
-  
+
     <div class="button-row">
       <button class="send-btn">Burn</button>
-  
+
       <div class="mic-group">
         <button id="mic-btn">🎤</button>
         <div class="language-selector">
@@ -45,21 +66,16 @@
       </div>
     </div>
   </div>
+
   
-  <!-- Floating sidebar-->
-  <aside class="sidebar">
-    <h2>How it works</h2>
-    <p>Type it</p>
-    <p>Submit it</p>
-    <p>Watch it burn</p>
-  </aside>
 
   <!-- Glow Effect -->
   <div class="screen-glow"></div>
 
-   <!-- Link to external JS file -->
-   <script src="confess.js"></script>
+  <!-- Link to external JS file -->
+  <script src="confess.js"></script>
 
-   
+
 </body>
+
 </html>
