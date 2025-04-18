@@ -20,38 +20,40 @@ document.addEventListener("DOMContentLoaded", function () {
     introPopup.classList.add("hidden");
   });
 
-  //  Fire animation elements
+  // Fire animation elements
   const fireAnimation = document.querySelector('.fire-animation');
- 
 
   // Audio files for website
   const burnSound = new Audio("fire.mp3");
   burnSound.volume = 0.5;
 
-   // fire-only background animation
-   const glowEffect = () => {
+  //  Setup audio context and track once to avoid re-creation errors
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const track = audioContext.createMediaElementSource(burnSound);
+  track.connect(audioContext.destination);
+  
+
+  // Fire-only background animation
+  const glowEffect = () => {
     fireAnimation.classList.add("active");
     setTimeout(() => {
       fireAnimation.classList.remove("active");
-    }, 600);
+    }, 1200);
   };
-  
-   // Core burn logic
+
+  // Core burn logic
   function burnMessage() {
     if (messageInput.value === "") {
       alert("Enter something in the textfield");
       return;
     }
 
-    // Eclear the text immediately
-  const userText = messageInput.value;      
-  messageInput.value = "";                   
+    // Clear the text immediately
+    messageInput.value = "";
 
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const track = audioContext.createMediaElementSource(burnSound);
-    track.connect(audioContext.destination);
-
+    // Use existing audioContext and track
     audioContext.resume().then(() => {
+      burnSound.currentTime = 0; // restart audio from beginning
       burnSound.play();
       glowEffect();
     });
@@ -75,9 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let recognition;
   let isListening = false;
 
-  
+  // Grab language selector
   const languageSelect = document.getElementById("languageSelect");
- 
 
   micButton.addEventListener("click", () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
