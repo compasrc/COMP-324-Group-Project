@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Lightroom</title>
+  <title>The Lightroom - Daily Inspiration</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/2.5.0/remixicon.min.css">
   <link rel="stylesheet" href="uplift.css" />
-  <script defer src="uplift.js"></script>
+  <script type="module" src="uplift.js"></script>
 </head>
 <body>
-
   <header class="header" id="header">
-    <nav class="nav container">
+    <nav class="nav container" aria-label="Main navigation">
       <a href="home.html" class="nav__logo">HOME</a>
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
@@ -24,31 +24,49 @@
             <a href="home.html#cont" class="nav__link">CONTACT</a>
           </li>
         </ul>
-        <div class="nav__social">
-          <a href="https://www.github.com/" target="_blank" class="nav__social-links">
+        <div class="nav__social" aria-label="Social media links">
+          <a href="https://www.github.com/" target="_blank" class="nav__social-links" aria-label="GitHub">
             <i class="ri-github-fill"></i>
           </a>
         </div>
-        <div class="nav__close" id="nav-close">
+        <button class="nav__close" id="nav-close" aria-label="Close menu">
           <i class="ri-close-line"></i>
-        </div>
+        </button>
       </div>
-      <div class="nav__toggle" id="nav-toggle">
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu">
         <i class="ri-menu-line"></i>
-      </div>
+      </button>
     </nav>
   </header>
-  
 
-  <!-- Affirmation Card -->
   <main class="main-content">
-    <div class="card">
-      <p id="quote-text">Click below to receive a fresh quote.</p>
-    </div>
+    <section class="hero">
+      <h1 class="hero__title animate-fade-in">Illuminate Your Day</h1>
+      <p class="hero__subtitle animate-slide-up">Find strength in words that inspire</p>
+    </section>
 
-    <button id="fetch-quote" class="new-button">🔁 New Affirmation</button>
-    <p class="footnote">Take a deep breath. You're exactly where you need to be.</p>
+    <section class="affirmation-section">
+      <div class="section-description animate-fade-in">
+        <h2>Daily Affirmations</h2>
+        <p>Welcome to your personal space for reflection and motivation. Each time you click the button below, 
+           you'll receive a new inspirational quote to uplift your spirit and brighten your day. 
+           Take a moment to reflect on these words of wisdom and carry their meaning with you.</p>
+      </div>
+
+      <article class="quote-container animate-scale-in">
+        <div class="card" aria-live="polite">
+          <p id="quote-text" class="quote-text">Click below to receive a fresh quote.</p>
+        </div>
+
+        <button id="fetch-quote" class="new-button" aria-label="Get new affirmation">
+          <span class="button-icon">🔁</span> New Affirmation
+        </button>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <p class="footnote animate-fade-in">Take a deep breath. You're exactly where you need to be.</p>
+    </footer>
   </main>
-
 </body>
 </html>

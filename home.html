@@ -4,100 +4,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!--=============== FAVICON ===============-->
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-
-
-    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-
-
-
-    <title>The Unburdening</title>
+    <title>THE UNBURDENING</title>
 </head>
 
 <body>
-    <!--==================== HEADER ====================-->
     <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">The Unburdening</a>
+        <nav class="nav container" aria-label="Main navigation">
+            <a href="#" class="nav__logo">UNBURDENING</a>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
                         <a href="#OurMission" class="nav__link">MISSION</a>
                     </li>
                     <li class="nav__item">
-                        <a href="confess.html" class="nav__link nav__link--fire">CONFESS</a>
+                        <a href="#container1" class="nav__link">CONFESS</a>
                     </li>
                     <li class="nav__item">
-                        <a href="uplift.html" class="nav__link nav__link--glow">The LIGHTROOM</a>
+                        <a href="#container2" class="nav__link nav__link--glow">LIGHTROOM</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#container3" class="nav__link">RECOMMENDATIONS</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about-us" class="nav__link">TEAM</a>
                     </li>
                     <li class="nav__item">
                         <a href="#cont" class="nav__link">CONTACT</a>
                     </li>
                 </ul>
                 <div class="nav__social">
-                    <a href="https://www.github.com/" target="_blank" class="nav__social-links">
+                    <a href="https://github.com/compasrc/COMP-324-Group-Project" target="_blank" class="nav__social-links" aria-label="GitHub repository">
                         <i class="ri-github-fill"></i>
                     </a>
                 </div>
-                <div class="nav__close" id="nav-close">
+                <button class="nav__close" id="nav-close" aria-label="Close menu">
                     <i class="ri-close-line"></i>
-                </div>
+                </button>
             </div>
-            <div class="nav__toggle" id="nav-toggle">
+            <button class="nav__toggle" id="nav-toggle" aria-label="Open menu">
                 <i class="ri-menu-line"></i>
-            </div>
+            </button>
         </nav>
     </header>
 
-    <!--==================== MAIN CONTENT ====================-->
-    <div id="OurMission" class="mission-container">
-        <div class="mission-container__quote">
-            <h2 class="mission-container__title">Our Mission</h2>
-            <blockquote class="mission-container__text">
-                "Unburdening is a safe space where you can write your frustrations, burn them, and feel lighter.
-                Your messages disappear as if they were never there."
-            </blockquote>
-            <blockquote class="mission-container__text">
-                "No storage. No tracking. Just catharsis."
-            </blockquote>
-        </div>
-        <img src="image.avif" alt="Mission Image" class="mission-container__image">
-    </div>
+    <main>
+        <section id="OurMission" class="mission-container">
+            <div class="video-background">
+                <div class="youtube-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/IWVJq-4zW24?si=sA-q1MyTjFEOZXrI&autoplay=1&mute=1&loop=1&playlist=IWVJq-4zW24&controls=0&showinfo=0&rel=0&disablekb=1&iv_load_policy=3&modestbranding=1" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen 
+                        frameborder="0"
+                        title="Background video"
+                        aria-label="Background video">
+                    </iframe>
+                </div>
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="mission-container__quote">
+                <h2 class="mission-container__title">OUR MISSION</h2>
+                <blockquote class="mission-container__text">
+                    "Unburdening is a safe space where you can write your frustrations, burn them, and feel lighter. 
+                    Your messages disappear as if they were never there."
+                </blockquote>
+                <blockquote class="mission-container__text">
+                    "No storage. No tracking. Just catharsis."
+                </blockquote>
+            </div>
+            <img src="image.avif" alt="Mission Image" class="mission-container__image">
+        </section>
+        
+        <section class="container1" id="container1" aria-labelledby="confess-title">
+            <div class="container1__content">
+                <h2 class="container1__title" id="confess-title">BURN CONFESSION</h2>
+                <p class="container1__description">
+                    This is a space where you can share your thoughts and emotions freely, no strings attached!
+                </p>
+                <div class="container1__info">
+                    <p>Express yourself without judgment. Type your confession, hit the "Burn" button, and watch as your words disappear forever. Perfect for those thoughts you need to release but don't want to keep.</p>
+                </div>
+                <a href="confess.html" class="container1__button">Try it</a>
+            </div>
+            <img src="burn confess.png" alt="Confess illustration" class="container1__image">
+        </section>
 
-    <div class="container1">
-        <div class="container1__content">
-            <h2 class="container1__title">Burn Confession</h2>
-            <p class="container1__description">
-                This is a space where you can share your thoughts and emotions freely, no strings attached!
-            </p>
-            <a href="confess.html" class="container1__button">Try it</a>
-        </div>
-        <img src="burn confess.png" alt="Confess" class="container1__image">
-    </div>
+        <section class="container2" id="container2" aria-labelledby="lightroom-title">
+            <div class="container2__content">
+                <h2 class="container2__title" id="lightroom-title">LIGHTROOM</h2>
+                <h3 class="container2__subtitle">Find Inspiration After Release</h3>
+                <p class="container2__description">
+                    After unburdening your thoughts, find motivation to move forward with randomly generated inspirational quotes.
+                </p>
+                <div class="container2__info">
+                    <p>Every confession you release deserves a moment of reflection and positivity. Our curated collection of motivational quotes helps you transition from letting go to moving forward with renewed perspective.</p>
+                </div>
+                <a href="uplift.html" class="container2__button">Get Inspired</a>
+            </div>
+            <img src="lightroom.png" alt="Motivational Quotes illustration" class="container2__image">
+        </section>
+        
+        <section class="container-3" id="container3" aria-labelledby="recommended-title">
+            <div class="recommended-videos-wrapper">
+                <h2 class="recommended-title" id="recommended-title">RECOMMENDED VIDEOS</h2>
+                
+                <div class="recommended-content">
+                    <div class="rec-video-container">
+                        <div class="rec-swiper-wrapper">
+                            <div class="rec-swiper-slide">
+                                <div class="video-wrapper">
+                                    <iframe class="video-player" src="https://www.youtube.com/embed/AmcGTRdXZeE?rel=0&enablejsapi=1&playsinline=1&controls=1" title="Work Like Hell - Best Motivational Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="rec-swiper-slide">
+                                <div class="video-wrapper">
+                                    <iframe class="video-player" src="https://www.youtube.com/embed/h6vDPKtk804?rel=0&enablejsapi=1&playsinline=1&controls=1" title="You Are Capable Of Amazing Things - Motivational Speech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="rec-swiper-slide">
+                                <div class="video-wrapper">
+                                    <iframe class="video-player" src="https://www.youtube.com/embed/W1Jn0EGbKxU?rel=0&enablejsapi=1&playsinline=1&controls=1" title="You Are Capable Of Amazing Things - Motivational Speech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="rec-swiper-slide">
+                                <div class="video-wrapper">
+                                    <iframe class="video-player" src="https://www.youtube.com/embed/nKpxRwCGBGU?rel=0&enablejsapi=1&playsinline=1&controls=1" title="Listen To This Every Day And Change Your Life - Motivational Speech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="rec-swiper-slide">
+                                <div class="video-wrapper">
+                                    <iframe class="video-player" src="https://www.youtube.com/embed/XnJa6tK2ack?rel=0&enablejsapi=1&playsinline=1&controls=1" title="Listen To This Every Day And Change Your Life - Motivational Speech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="rec-swiper-slide">
+                                <div class="video-wrapper">
+                                    <iframe class="video-player" src="https://www.youtube.com/embed/AJ1-WE1B2Ss?rel=0&enablejsapi=1&playsinline=1&controls=1" title="Listen To This Every Day And Change Your Life - Motivational Speech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rec-nav-buttons">
+                            <button class="rec-button-prev" aria-label="Previous video">
+                                <span>❮</span>
+                            </button>
+                            <button class="rec-button-next" aria-label="Next video">
+                                <span>❯</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <article class="recommended-text">
+                        <h3 class="subtitle">Heal & Grow Stronger</h3>
+                        <p>After releasing your confessions to the flames, it's time to rebuild and grow. These motivational speeches are carefully selected to help you embrace a new beginning.</p>
+                        <p>Take a moment to listen, reflect, and allow these powerful words to inspire your journey forward. Each video offers a unique perspective on resilience, determination, and personal growth.</p>
+                        <p>Let these messages boost your motivation and remind you that whatever burden you've just released, you have the strength to build something beautiful in its place.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <!--==================== FOOTER ====================-->
-    <footer>
-        <div id="cont" class="footer-content">
-            <div class="contact-details">
+        <section class="about-us" id="about-us" aria-labelledby="about-us-title">
+            <div class="about-us__content">
+                <h2 class="about-us__title" id="about-us-title">ABOUT US</h2>
+                <p class="about-us__description">
+                    We specialize in creating therapeutic experiences that help people release negative emotions and find new motivation.
+                </p>
+                <div class="about-us__info">
+                    <p>Our project focuses on the transformative power of confession burning. We create safe spaces for individuals to write down their regrets, fears, and past traumas before symbolically burning them in a controlled ceremony. This ritual represents letting go of what no longer serves you, creating space for new beginnings. After the release, we guide participants through motivational exercises that help redirect their energy toward positive future goals. This dual approach of release and renewal has helped hundreds of people break free from emotional burdens and step confidently into their future with renewed purpose and clarity.</p>
+                    
+                    <p>Through our unique combination of ancient ritual practices and modern psychological techniques, we've developed a process that honors the importance of acknowledging past struggles while emphasizing the power of forward momentum. Our community-centered approach ensures that no one has to face their challenges alone.</p>
+                </div>
+                <a href="team.html" class="about-us__button">FIND MORE ABOUT US</a>
+            </div>
+
+            <div class="about-us__image-container">
+                <img src="about us.jpg" alt="Our Team Profiles" class="about-us__image">
+            </div>
+        </section>
+    </main>
+
+    <footer id="cont">
+        <div class="footer-content">
+            <section class="contact-details">
                 <h2>Contact Us</h2>
-                <form id="contact-form" action="#" method="post">
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Your Email" required>
-                    <textarea id="message" placeholder="Your Message" required></textarea>
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="post" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" name="access_key" value="d71248e6-ff42-4730-b20f-35f095c5428a">
+                    <label for="name" class="visually-hidden">Your Name</label>
+                    <input name="name" type="text" id="name" placeholder="Your Name" required>
+                    <label for="email" class="visually-hidden">Your Email</label>
+                    <input name="email" type="email" id="email" placeholder="Your Email" required>
+                    <label for="message" class="visually-hidden">Your Message</label>
+                    <textarea name="message" id="message" placeholder="Your Message" required></textarea>
                     <button type="submit">Submit</button>
                 </form>
                 <p id="form-success" style="display:none; color: green;">Thank you for reaching out! We will get back to you soon.</p>
-            </div>
-            <div class="website-info">
+            </section>
+
+            <section class="website-info">
                 <h2>About Us</h2>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                </ul>
-            </div>
+                <p>We offer innovative solutions to help businesses grow online. Our services include web development, digital marketing, and more.</p>
+                <nav aria-label="Footer links">
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </nav>
+            </section>
         </div>
+
         <div class="footer-bottom">
             <p>&copy; 2025 All Rights Reserved.</p>
         </div>
@@ -105,6 +227,5 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
