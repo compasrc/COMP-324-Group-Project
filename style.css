@@ -61,7 +61,7 @@ img {
   padding-bottom: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
 }
 
 .nav__logo {
@@ -69,29 +69,24 @@ img {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 3.5px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  
+  line-height: 1;
 }
 
 .nav__logo:hover {
   color: red;
 }
 
-.nav__logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
-}
 .nav__logo--line1 {
-  font-size: 0.9rem;       
-  margin-bottom: 0.2rem;  
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
 }
+
 .nav__logo--line2 {
-  font-size: 1.5rem;       
+  font-size: 1.5rem;
   font-weight: var(--font-bold);
-  
 }
 
 @media screen and (max-width: 1023px) {
@@ -158,6 +153,7 @@ img {
     font-size: 18px;
     letter-spacing: 2px;
   }
+
   .nav__link {
     font-size: 14px;
   }
@@ -178,17 +174,17 @@ img {
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .nav__close,
   .nav__toggle {
     display: none;
   }
-  
+
   .nav__menu {
     display: flex;
     align-items: center;
   }
-  
+
   .nav__list {
     flex-direction: row;
     column-gap: 1rem;
@@ -196,7 +192,7 @@ img {
     margin-left: 220px;
     padding-top: 5px;
   }
-  
+
   .nav__social {
     margin: 0;
     display: flex;
@@ -204,12 +200,12 @@ img {
     margin-left: 1.5rem;
     padding-top: 5px;
   }
-  
+
   .nav__social-links {
     display: block;
     visibility: visible;
   }
-  
+
   .nav__item {
     margin: 0 8px;
   }
@@ -220,10 +216,12 @@ img {
     text-shadow: 0 0 5px #20b1b1, 0 0 10px #add8e6;
     opacity: 1;
   }
+
   50% {
     text-shadow: 0 0 20px #20b1b1, 0 0 30px #00ffff;
     opacity: 0.6;
   }
+
   100% {
     text-shadow: 0 0 5px #20b1b1, 0 0 10px #add8e6;
     opacity: 1;
@@ -240,10 +238,12 @@ img {
 }
 
 @keyframes glowOrangeBlink {
-  0%,100% {
+  0%,
+  100% {
     text-shadow: 0 0 5px #ff6b08, 0 0 10px #ffc107;
     opacity: 1;
   }
+
   50% {
     text-shadow: 0 0 20px #ff6b08, 0 0 30px #ffc107;
     opacity: 0.6;
@@ -256,8 +256,6 @@ img {
   animation: glowOrangeBlink 3.5s infinite !important;
 }
 
-
-
 /*==================== BIG CONTAINER WITH IMAGE ====================*/
 .mission-container {
   position: relative;
@@ -267,15 +265,14 @@ img {
   justify-content: space-between;
   width: 100%;
   max-width: 1500px;
-  margin-top: 70px; 
+  margin-top: 70px;
   margin-left: auto;
   margin-right: auto;
   background-color: black;
   padding: 40px;
   gap: 30px;
-  overflow: hidden; 
+  overflow: hidden;
   min-height: 500px;
-  
 }
 
 .video-background {
@@ -313,7 +310,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
@@ -359,6 +356,7 @@ img {
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -369,6 +367,7 @@ img {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -447,14 +446,14 @@ img {
 .container1__title {
   font-size: 3rem;
   font-weight: var(--font-bold);
-  color: #FF4500;
+  color: #ff4500;
   margin-bottom: 1rem;
   text-shadow: 0 0 5px rgba(255, 69, 0, 0.3);
 }
 
 .container1__subtitle {
   font-size: 1.4rem;
-  color: #FF8C69;
+  color: #ff8c69;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
@@ -462,22 +461,22 @@ img {
 .container1__description {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #E0E0E0;
+  color: #e0e0e0;
   margin-bottom: 2rem;
 }
 
 .container1__info {
   font-size: 1rem;
   line-height: 1.5;
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 3px solid #FF4500;
+  border-left: 3px solid #ff4500;
 }
 
 .container1__button {
   padding: 1rem 2rem;
-  background-color: #FF4500;
+  background-color: #ff4500;
   color: white;
   text-transform: uppercase;
   border-radius: 5px;
@@ -491,7 +490,7 @@ img {
 }
 
 .container1__button:hover {
-  background-color: #FF6347;
+  background-color: #ff6347;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
 }
@@ -534,11 +533,9 @@ img {
 }
 
 @media (max-width: 768px) {
-  
 }
 
 @media (max-width: 480px) {
-  
 }
 
 /*=============== CONTAINER 2 ===============*/
@@ -579,14 +576,14 @@ img {
 .container2__title {
   font-size: 3rem;
   font-weight: var(--font-bold);
-  color: #41B4FF;
+  color: #41b4ff;
   margin-bottom: 1rem;
   text-shadow: 0 0 5px rgba(65, 180, 255, 0.3);
 }
 
 .container2__subtitle {
   font-size: 1.4rem;
-  color: #89CFF0;
+  color: #89cff0;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
@@ -594,22 +591,22 @@ img {
 .container2__description {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #E0F2FF;
+  color: #e0f2ff;
   margin-bottom: 2rem;
 }
 
 .container2__info {
   font-size: 1rem;
   line-height: 1.5;
-  color: #B0D8FF;
+  color: #b0d8ff;
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 3px solid #41B4FF;
+  border-left: 3px solid #41b4ff;
 }
 
 .container2__button {
   padding: 1rem 2rem;
-  background-color: #2C88D9;
+  background-color: #2c88d9;
   color: white;
   text-transform: uppercase;
   border-radius: 5px;
@@ -623,7 +620,7 @@ img {
 }
 
 .container2__button:hover {
-  background-color: #41B4FF;
+  background-color: #41b4ff;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(65, 180, 255, 0.4);
 }
@@ -877,7 +874,7 @@ img {
     font-size: 1.8rem;
   }
 
-  .recommended-text, 
+  .recommended-text,
   .rec-video-container {
     width: 100%;
   }
@@ -903,13 +900,13 @@ img {
     background-color: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(255, 224, 115, 0.4);
   }
-  
+
   .rec-button-prev:hover,
   .rec-button-next:hover {
     background-color: rgba(0, 0, 0, 0.9);
     border: 1px solid #ffe073;
   }
-  
+
   .video-wrapper {
     margin-bottom: 10px;
   }
@@ -928,16 +925,16 @@ img {
   .container-3 {
     padding: 30px 5px;
   }
-  
+
   .recommended-title {
     font-size: 2rem;
     margin-bottom: 20px;
   }
-  
+
   .subtitle {
     font-size: 1.5rem;
   }
-  
+
   .recommended-text p {
     font-size: 1rem;
   }
@@ -946,8 +943,8 @@ img {
     margin-top: 25px;
     gap: 30px;
   }
-  
-  .rec-button-prev, 
+
+  .rec-button-prev,
   .rec-button-next {
     width: 40px;
     height: 40px;
@@ -999,7 +996,7 @@ img {
 .about-us__title {
   font-size: 3rem;
   font-weight: var(--font-bold);
-  color: #41B4FF;
+  color: #41b4ff;
   margin-bottom: 1rem;
   text-shadow: 0 0 5px rgba(65, 180, 255, 0.3);
 }
@@ -1007,17 +1004,17 @@ img {
 .about-us__description {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #E0F2FF;
+  color: #e0f2ff;
   margin-bottom: 2rem;
 }
 
 .about-us__info {
   font-size: 1rem;
   line-height: 1.5;
-  color: #B0D8FF;
+  color: #b0d8ff;
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 3px solid #41B4FF;
+  border-left: 3px solid #41b4ff;
 }
 
 .about-us__info p {
@@ -1026,7 +1023,7 @@ img {
 
 .about-us__button {
   padding: 1rem 2rem;
-  background-color: #2C88D9;
+  background-color: #2c88d9;
   color: white;
   text-transform: uppercase;
   border-radius: 5px;
@@ -1040,7 +1037,7 @@ img {
 }
 
 .about-us__button:hover {
-  background-color: #41B4FF;
+  background-color: #41b4ff;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(65, 180, 255, 0.4);
 }
@@ -1125,8 +1122,8 @@ img {
 /*=============== FOOTER ===============*/
 
 footer {
-  background-color: #333; 
-  color: #f0f0f0; 
+  background-color: #333;
+  color: #f0f0f0;
   padding: 60px 40px;
   text-align: center;
   max-width: 1500px;
@@ -1224,33 +1221,31 @@ footer {
   color: #bbb;
 }
 
-
-
 /* Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
   .footer-content {
-      flex-direction: column; 
-      text-align: center; 
+    flex-direction: column;
+    text-align: center;
   }
 
   .contact-details,
   .website-info {
-      max-width: 100%;  
-      margin-bottom: 20px;
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 
   .contact-details input,
   .contact-details textarea,
   .contact-details button {
-      width: 100%;  
+    width: 100%;
   }
 
   .contact-details button {
-      padding: 12px;
+    padding: 12px;
   }
 
   #form-success {
-      font-size: 16px; 
+    font-size: 16px;
   }
 }
 
