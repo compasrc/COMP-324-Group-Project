@@ -492,3 +492,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const showSurveyText = document.getElementById("showSurveyText");
+  const showSurveyBtn = document.getElementById("showSurveyBtn");
+  const demographicsContainer = document.querySelector(".demographics-container");
+
+  if (showSurveyBtn && demographicsContainer) {
+    showSurveyBtn.addEventListener("click", () => {
+      demographicsContainer.style.display = "flex";
+      showSurveyBtn.style.display = "none"; // hide the button
+      showSurveyText.style.display = "none"; // hide the text
+    });
+  }
+});
