@@ -3,68 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Lightroom - Daily Inspiration</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/2.5.0/remixicon.min.css">
+  <title>The Lightroom - Mood Quotes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/2.5.0/remixicon.min.css" />
   <link rel="stylesheet" href="uplift.css" />
-  <link rel="stylesheet" href="variables.css" />
-  <script type="module" src="uplift.js"></script>
 </head>
 <body>
-  <header class="header" id="header">
+  <header class="header" id="header" role="banner">
     <nav class="nav container" aria-label="Main navigation">
-      <a href="home.html" class="nav__logo">HOME</a>
+      <a href="home.html" class="nav__logo" aria-label="Homepage">HOME</a>
       <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a href="home.html#OurMission" class="nav__link">MISSION</a>
-          </li>
-          <li class="nav__item">
-            <a href="confess.html" class="nav__link">CONFESS</a>
-          </li>
-          <li class="nav__item">
-            <a href="home.html#cont" class="nav__link">CONTACT</a>
-          </li>
+        <ul class="nav__list" role="menu">
+          <li class="nav__item"><a href="home.html#OurMission" class="nav__link" role="menuitem">MISSION</a></li>
+          <li class="nav__item"><a href="confess.html" class="nav__link" role="menuitem">CONFESS</a></li>
+          <li class="nav__item"><a href="home.html#cont" class="nav__link" role="menuitem">CONTACT</a></li>
         </ul>
-        <div class="nav__social" aria-label="Social media links">
-          <a href="https://www.github.com/" target="_blank" class="nav__social-links" aria-label="GitHub">
+        <div class="nav__social" aria-label="Social media">
+          <a href="https://www.github.com/" target="_blank" class="nav__social-links" aria-label="GitHub Profile">
             <i class="ri-github-fill"></i>
           </a>
         </div>
-        <button class="nav__close" id="nav-close" aria-label="Close menu">
-          <i class="ri-close-line"></i>
-        </button>
+        <button class="nav__close" id="nav-close" aria-label="Close menu"><i class="ri-close-line"></i></button>
       </div>
-      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu">
-        <i class="ri-menu-line"></i>
-      </button>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu"><i class="ri-menu-line"></i></button>
     </nav>
   </header>
 
-  <main class="main-content">
-    <section class="hero">
-      <h1 class="hero__title animate-fade-in">Illuminate Your Day</h1>
+  <main class="main-content" role="main">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 class="hero__title" id="page-title">Illuminate Your Day</h1>
+      <p class="hero__subtitle">Discover quotes that match your mood</p>
     </section>
 
-    <section class="affirmation-section">
-      <div class="section-description animate-fade-in">
-        <p>Welcome to Lightroom. Each time you click the button below, 
-           you'll receive a new inspirational quote to brighten your day. </p>
+    <section class="affirmation-section" aria-labelledby="how-feeling">
+      <a href="#" id="open-guide" class="guide-link" aria-haspopup="dialog">New here? Quick guide</a>
+
+      <!-- Pop-up Guide -->
+      <div id="guide-popup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="guide-title">
+        <div class="popup-box">
+          <h3 id="guide-title">How It Works</h3>
+          <p>Select one of the moods below to receive a quote that matches your vibe, or get a random quote to start your day.</p>
+          <button id="close-guide" class="guide-button" aria-label="Close guide">Got it!</button>
+        </div>
       </div>
 
-      <article class="quote-container animate-scale-in">
-        <div class="card" aria-live="polite">
-          <p id="quote-text" class="quote-text">Click below to receive a fresh quote.</p>
+      <div class="section-description">
+        <h2 id="how-feeling">How are you feeling today?</h2>
+        <div class="mood-buttons" role="group" aria-label="Mood selection buttons">
+          <button class="new-button" onclick="fetchQuoteByMood('random')" aria-label="Get random quote">Random</button>
+          <button class="new-button" onclick="fetchQuoteByMood('happy')" aria-label="Get happy quote">Happy</button>
+          <button class="new-button" onclick="fetchQuoteByMood('sad')" aria-label="Get sad quote">Sad</button>
+          <button class="new-button" onclick="fetchQuoteByMood('angry')" aria-label="Get angry quote">Angry</button>
+          <button class="new-button" onclick="fetchQuoteByMood('hopeless')" aria-label="Get hopeless quote">Hopeless</button>
+          <button class="new-button" onclick="fetchQuoteByMood('confused')" aria-label="Get confused quote">Confused</button>
         </div>
+      </div>
 
-        <button id="fetch-quote" class="new-button" aria-label="Get new affirmation">
-          <span class="button-icon">🔁</span> New Affirmation
-        </button>
+      <article class="quote-container" aria-live="polite">
+        <div class="card" role="region" aria-label="Quote display">
+          <p id="quote-text" class="quote-text">Awaiting your vibe...</p>
+        </div>
       </article>
     </section>
 
-    <footer class="footer">
-      <p class="footnote animate-fade-in">Take a deep breath. You're exactly where you need to be.</p>
+    <footer class="footer" role="contentinfo">
+      <p class="footnote">Take a deep breath. You're exactly where you need to be.</p>
     </footer>
   </main>
+
+  <script type="module" src="uplift.js"></script>
 </body>
 </html>
+

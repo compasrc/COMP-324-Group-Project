@@ -1,162 +1,69 @@
-// ==============================
-// API Configuration
-// ==============================
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyDOJcoGtUImT_jCQvyw6RvqJl9-Woqu5dQ",
+  authDomain: "moodquotes-9e657.firebaseapp.com",
+  projectId: "moodquotes-9e657",
+  storageBucket: "moodquotes-9e657.firebasestorage.app",
+  messagingSenderId: "123007476409",
+  appId: "1:123007476409:web:3fe6b8b33dc7470354b168"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const quoteText = document.getElementById("quote-text");
 
 const API_CONFIG = {
-  url: "https://api.allorigins.win/raw?url=https://zenquotes.io/api/random",
+  url: `https://api.allorigins.win/raw?url=https://zenquotes.io/api/random&timestamp=${Date.now()}`,
   options: {
     cache: "no-store",
-    headers: {
-      'Content-Type': 'application/json'
-    }
+    headers: { 'Content-Type': 'application/json' }
   }
 };
 
-// ==============================
-// DOM Elements
-// ==============================
+// Guide popup
+document.getElementById("open-guide").addEventListener("click", e => {
+  e.preventDefault();
+  document.getElementById("guide-popup").style.display = "flex";
+});
+document.getElementById("close-guide").addEventListener("click", () => {
+  document.getElementById("guide-popup").style.display = "none";
+});
 
-const DOM = {
-  quoteText: document.getElementById("quote-text"),
-  fetchButton: document.getElementById("fetch-quote"),
-  navToggle: document.getElementById("nav-toggle"),
-  navClose: document.getElementById("nav-close"),
-  navMenu: document.getElementById("nav-menu")
-};
-
-// ==============================
-// Fetch Quote from API or Local Fallback
-// ==============================
-
-async function fetchQuote() {
-  try {
-    const response = await fetch(API_CONFIG.url, API_CONFIG.options);
-    if (!response.ok) {
-      throw new Error(`Network error: ${response.status} ${response.statusText}`);
+window.fetchQuoteByMood = async function (mood) {
+  quoteText.innerText = "Fetching magic...";
+  if (mood === "random") {
+    try {
+      const response = await fetch(API_CONFIG.url, API_CONFIG.options);
+      if (!response.ok) throw new Error("Network issue");
+      const data = await response.json();
+      if (!Array.isArray(data) || !data[0]) throw new Error("Invalid quote format");
+      quoteText.innerText = `${data[0].q} — ${data[0].a}`;
+    } catch (error) {
+      console.error("Error fetching random quote:", error);
+      quoteText.innerText = "Couldn't fetch a random quote. Try again.";
     }
-
-    const data = await response.json();
-
-    if (!Array.isArray(data) || data.length === 0) {
-      throw new Error("Invalid API response format");
-    }
-
-    return data[0];
-  } catch (error) {
-    console.error("API failed. Attempting to load from local JSON...", error);
-    return await loadLocalQuote();
-  }
-}
-
-async function loadLocalQuote() {
-  try {
-    const response = await fetch('quotes.json');
-    const data = await response.json();
-
-    if (!Array.isArray(data.quotes) || data.quotes.length === 0) {
-      throw new Error("Local fallback quotes are invalid or empty.");
-    }
-
-    const random = data.quotes[Math.floor(Math.random() * data.quotes.length)];
-    return random;
-  } catch (error) {
-    console.error("Local quote fetch also failed:", error);
-    return { q: "No quote available at the moment.", a: "— System" };
-  }
-}
-
-// ==============================
-// Update UI with Quote
-// ==============================
-
-function updateQuoteDisplay(text, isError = false) {
-  if (!DOM.quoteText) return;
-
-  DOM.quoteText.innerText = text;
-
-  if (isError) {
-    DOM.quoteText.classList.add('error');
   } else {
-    DOM.quoteText.classList.remove('error');
-  }
-
-  // Add animation effect when quote changes
-  DOM.quoteText.classList.remove('animate-update');
-  void DOM.quoteText.offsetWidth;
-  DOM.quoteText.classList.add('animate-update');
-}
-
-// ==============================
-// Handle New Quote Button Click
-// ==============================
-
-async function handleNewQuoteClick() {
-  if (DOM.fetchButton) {
-    DOM.fetchButton.disabled = true;
-    DOM.fetchButton.classList.add('loading');
-  }
-
-  try {
-    updateQuoteDisplay("Loading new inspiration...");
-    const quoteData = await fetchQuote();
-    updateQuoteDisplay(`"${quoteData.q}" — ${quoteData.a}`);
-  } catch (error) {
-    updateQuoteDisplay("Couldn't fetch a quote. Please try again later.", true);
-  } finally {
-    if (DOM.fetchButton) {
-      DOM.fetchButton.disabled = false;
-      DOM.fetchButton.classList.remove('loading');
+    try {
+      const q = query(collection(db, "quotes"), where("mood", "==", mood));
+      const snapshot = await getDocs(q);
+      const quotes = [];
+      snapshot.forEach(doc => quotes.push(doc.data()));
+      if (quotes.length > 0) {
+        const selected = quotes[Math.floor(Math.random() * quotes.length)];
+        quoteText.innerText = `${selected.text} — ${selected.author || "Anonymous"}`;
+      } else {
+        quoteText.innerText = "No quotes found for this mood.";
+      }
+    } catch (err) {
+      console.error("Error fetching from Firebase:", err);
+      quoteText.innerText = "Error loading mood-based quote.";
     }
   }
-}
+};
 
-// ==============================
-// Setup Navigation
-// ==============================
-
-function setupNavigation() {
-  if (DOM.navToggle) {
-    DOM.navToggle.addEventListener('click', () => {
-      DOM.navMenu.classList.add('show-menu');
-    });
-  }
-
-  if (DOM.navClose) {
-    DOM.navClose.addEventListener('click', () => {
-      DOM.navMenu.classList.remove('show-menu');
-    });
-  }
-
-  document.querySelectorAll('.nav__link').forEach(link => {
-    link.addEventListener('click', () => {
-      DOM.navMenu.classList.remove('show-menu');
-    });
-  });
-}
-
-// ==============================
-// App Initialization
-// ==============================
-
-function initApp() {
-  if (DOM.fetchButton) {
-    DOM.fetchButton.addEventListener("click", handleNewQuoteClick);
-  }
-
-  setupNavigation();
-  handleNewQuoteClick();
-
-  window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    if (window.scrollY >= 50) {
-      header.classList.add('scroll-header');
-    } else {
-      header.classList.remove('scroll-header');
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', initApp);
-
-// Optional Module Export
-export { initApp, fetchQuote, handleNewQuoteClick };
+window.addEventListener("DOMContentLoaded", async () => {
+  await window.fetchQuoteByMood("random");
+});

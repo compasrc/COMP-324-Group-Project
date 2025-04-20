@@ -1,6 +1,5 @@
-/* CSS Variables */
+/* VARIABLES */
 :root {
-  /* Colors */
   --color-primary: #4a8eff;
   --color-secondary: #34d399;
   --color-text: #2c3e50;
@@ -9,153 +8,93 @@
   --color-card: #ffffff;
   --color-navbar: #2c3e50;
   --color-navbar-text: #ffffff;
-
-  /* Sizes */
   --size-container: 1140px;
   --border-radius: 20px;
-
-  /* Shadows */
   --shadow-small: 0 4px 6px rgba(0, 0, 0, 0.05);
   --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Reset & Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* RESET + BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   background: linear-gradient(135deg, #c7ecee, #e0f7fa, #bbdefb);
   color: var(--color-text);
-  line-height: 1.6;
   min-height: 100vh;
 }
-
 .container {
   max-width: var(--size-container);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
+a { text-decoration: none; color: inherit; }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Header and Navigation */
+/* NAVIGATION */
 .header {
   position: fixed;
   width: 100%;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   background-color: var(--color-navbar);
   z-index: 100;
   box-shadow: var(--shadow-small);
 }
-
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 2rem;
 }
-
 .nav__logo {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-navbar-text);
   letter-spacing: 2px;
-  transition: transform 0.3s;
 }
-
-.nav__logo:hover {
-  transform: scale(1.05);
-}
-
 .nav__menu {
   display: flex;
   align-items: center;
   gap: 3rem;
 }
-
 .nav__list {
   display: flex;
   list-style: none;
   gap: 2rem;
 }
-
 .nav__link {
   color: var(--color-navbar-text);
   font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.3s;
   position: relative;
 }
-
 .nav__link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
+  content: ''; position: absolute; width: 0; height: 2px;
+  bottom: -4px; left: 0;
   background-color: var(--color-secondary);
   transition: width 0.3s;
 }
-
-.nav__link:hover::after {
-  width: 100%;
-}
-
-.nav__social {
-  display: flex;
-  gap: 1.5rem;
-}
-
+.nav__link:hover::after { width: 100%; }
+.nav__social { display: flex; gap: 1.5rem; }
 .nav__social-links {
   font-size: 1.2rem;
   color: var(--color-navbar-text);
-  transition: transform 0.3s;
 }
+.nav__close, .nav__toggle { display: none; }
 
-.nav__social-links:hover {
-  transform: scale(1.2);
-}
-
-.nav__close,
-.nav__toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  color: var(--color-navbar-text);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* Main Content Styles */
+/* MAIN */
 .main-content {
   padding: 7rem 1rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-/* Hero Section */
 .hero {
   text-align: center;
   margin-bottom: 3rem;
 }
-
 .hero__title {
   font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
   color: var(--color-navbar);
 }
-
 .hero__subtitle {
   font-size: 1.2rem;
   color: var(--color-text-light);
@@ -163,7 +102,7 @@ a {
   margin: 0 auto;
 }
 
-/* Affirmation Section */
+/* QUOTE SECTION */
 .affirmation-section {
   width: 100%;
   max-width: 900px;
@@ -173,23 +112,16 @@ a {
   align-items: center;
   gap: 2rem;
 }
-
 .section-description {
   text-align: center;
   max-width: 700px;
 }
-
 .section-description h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--color-navbar);
 }
-
-.section-description p {
-  color: var(--color-text);
-}
-
-/* Quote Container */
+.section-description p { color: var(--color-text); }
 .quote-container {
   width: 100%;
   display: flex;
@@ -197,8 +129,6 @@ a {
   align-items: center;
   gap: 2rem;
 }
-
-/* Card */
 .card {
   background-color: var(--color-card);
   border-radius: var(--border-radius);
@@ -208,85 +138,119 @@ a {
   box-shadow: var(--shadow-medium);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
-
 .quote-text {
   font-size: 1.5rem;
-  line-height: 1.6;
   color: var(--color-text);
   text-align: center;
   font-style: italic;
 }
 
-/* Button Styles */
+/* MOOD BUTTONS */
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
 .new-button {
   background-color: var(--color-navbar);
-  color: var(--color-navbar-text);
+  color: white;
   border: none;
-  padding: 0.8rem 1.8rem;
-  border-radius: 30px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   box-shadow: var(--shadow-small);
 }
-
 .new-button:hover {
   background-color: var(--color-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-.button-icon {
-  font-size: 1.1rem;
+/* POPUP */
+.guide-link {
+  color: #4a8eff;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  display: inline-block;
 }
 
-/* Footer */
-.footer {
-  margin-top: 4rem;
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.popup-box {
+  background: #ffffff;
+  padding: 2.8rem 2rem;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   text-align: center;
-  width: 100%;
+  animation: slideUp 0.3s ease;
 }
 
-.footnote {
+.popup-box h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--color-navbar);
+  font-weight: 700;
+}
+
+.popup-box p {
   font-size: 1rem;
   color: var(--color-text-light);
-  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
 }
 
-/* Animations */
-.animate-fade-in {
-  animation: fadeIn 1s ease forwards;
+/* Refined Button */
+.guide-button {
+  background-color: #4a8eff;
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 5px 14px rgba(74, 142, 255, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.animate-slide-up {
-  animation: slideUp 0.8s ease forwards;
+.guide-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
 }
 
-.animate-scale-in {
-  animation: scaleIn 0.7s ease forwards;
-}
-
+/* Animation Keyframes */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -294,31 +258,23 @@ a {
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* FOOTER */
+.footer {
+  margin-top: 4rem;
+  text-align: center;
+  width: 100%;
+}
+.footnote {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  font-style: italic;
 }
 
-/* Media Queries for Responsiveness */
+/* MEDIA */
 @media (max-width: 768px) {
-  .hero__title {
-    font-size: 2.5rem;
-  }
-
-  .card {
-    padding: 2rem 1.5rem;
-  }
-
-  .quote-text {
-    font-size: 1.3rem;
-  }
-
+  .hero__title { font-size: 2.5rem; }
+  .card { padding: 2rem 1.5rem; }
+  .quote-text { font-size: 1.3rem; }
   .nav__menu {
     position: fixed;
     top: 0;
@@ -331,41 +287,16 @@ a {
     transition: right 0.4s;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   }
-
-  .nav__list {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .nav__close {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    display: block;
-  }
-
-  .nav__toggle {
-    display: block;
-  }
-
-  .show-menu {
-    right: 0;
-  }
+  .nav__list { flex-direction: column; text-align: center; }
+  .nav__close { display: block; position: absolute; top: 1rem; right: 1.5rem; }
+  .nav__toggle { display: block; }
+  .show-menu { right: 0; }
 }
 
 @media (max-width: 480px) {
-  .hero__title {
-    font-size: 2rem;
-  }
-
-  .section-description h2 {
-    font-size: 1.6rem;
-  }
-
-  .quote-text {
-    font-size: 1.1rem;
-  }
-
+  .hero__title { font-size: 2rem; }
+  .section-description h2 { font-size: 1.6rem; }
+  .quote-text { font-size: 1.1rem; }
   .new-button {
     padding: 0.7rem 1.5rem;
     font-size: 0.9rem;
