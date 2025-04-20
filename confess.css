@@ -370,6 +370,48 @@ main {
   overflow: hidden;
 }
 
+#burn-button {
+  background: linear-gradient(45deg, #ff4500, #ff6347);
+  color: white;
+  padding: 1rem 2.0rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 15px rgba(255, 69, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 69, 0, 1), 0 0 35px rgba(255, 69, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
+  }
+}
+
+#burn-button:hover {
+  background: linear-gradient(45deg, #ff6347, #ff4500);
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 69, 0, 0.7);
+}
+
+#burn-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 8px rgba(255, 69, 0, 0.4);
+}
+
 .send-btn:hover {
   box-shadow: 0 6px 15px rgba(255, 107, 8, 0.5);
   transform: translateY(-3px);
@@ -398,6 +440,12 @@ main {
 
 .send-btn {
   text-decoration: none;
+}
+
+.speak-label {
+  margin-left: auto;
+  text-align: center;
+  font-weight: 700;
 }
 
 .mic-group {
@@ -790,9 +838,9 @@ main {
   }
 
   .button-row {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .send-btn {
