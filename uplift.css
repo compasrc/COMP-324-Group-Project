@@ -9,11 +9,11 @@
   --color-card: #ffffff;
   --color-navbar: #2c3e50;
   --color-navbar-text: #ffffff;
-  
+
   /* Sizes */
   --size-container: 1140px;
   --border-radius: 20px;
-  
+
   /* Shadows */
   --shadow-small: 0 4px 6px rgba(0, 0, 0, 0.05);
   --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -79,14 +79,12 @@ a {
   display: flex;
   align-items: center;
   gap: 3rem;
-  
 }
 
 .nav__list {
   display: flex;
   list-style: none;
   gap: 2rem;
-  
 }
 
 .nav__link {
@@ -127,7 +125,8 @@ a {
   transform: scale(1.2);
 }
 
-.nav__close, .nav__toggle {
+.nav__close,
+.nav__toggle {
   display: none;
   background: transparent;
   border: none;
@@ -226,7 +225,7 @@ a {
 /* Button Styles */
 .new-button {
   background-color: var(--color-navbar);
-  color: white;
+  color: var(--color-navbar-text);
   border: none;
   padding: 0.8rem 1.8rem;
   border-radius: 30px;
@@ -276,27 +275,31 @@ a {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: translateY(30px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes scaleIn {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: scale(0.9);
   }
-  to { 
+  to {
     opacity: 1;
     transform: scale(1);
   }
@@ -307,15 +310,15 @@ a {
   .hero__title {
     font-size: 2.5rem;
   }
-  
+
   .card {
     padding: 2rem 1.5rem;
   }
-  
+
   .quote-text {
     font-size: 1.3rem;
   }
-  
+
   .nav__menu {
     position: fixed;
     top: 0;
@@ -328,23 +331,23 @@ a {
     transition: right 0.4s;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   }
-  
+
   .nav__list {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .nav__close {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
     display: block;
   }
-  
+
   .nav__toggle {
     display: block;
   }
-  
+
   .show-menu {
     right: 0;
   }
@@ -354,15 +357,15 @@ a {
   .hero__title {
     font-size: 2rem;
   }
-  
+
   .section-description h2 {
     font-size: 1.6rem;
   }
-  
+
   .quote-text {
     font-size: 1.1rem;
   }
-  
+
   .new-button {
     padding: 0.7rem 1.5rem;
     font-size: 0.9rem;
