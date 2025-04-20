@@ -1,41 +1,6 @@
-/*=============== GOOGLE FONTS ===============*/
+/*=============== IMPORT STATEMENTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
-
-/*=============== VARIABLES CSS ===============*/
-:root {
-  --header-height: 3.5rem;
-
-  /*========== Colors ==========*/
-  --title-color: hsl(0, 0%, 100%);
-  --text-color: hsl(0, 0%, 60%);
-  --body-color: hsl(0, 0%, 0%);
-
-  /*========== Font and typography ==========*/
-  --body-font: "Montserrat", sans-serif;
-  --h1-font-size: 1.5rem;
-  --h3-font-size: 1rem;
-  --normal-font-size: 0.938rem;
-  --small-font-size: 0.813rem;
-
-  /*========== Font weight ==========*/
-  --font-regular: 400;
-  --font-semi-bold: 600;
-  --font-bold: 700;
-
-  /*========== z index ==========*/
-  --z-tooltip: 10;
-  --z-fixed: 100;
-}
-
-/*========== Responsive typography ==========*/
-@media screen and (min-width: 1152px) {
-  :root {
-    --h1-font-size: 2.25rem;
-    --h3-font-size: 1.25rem;
-    --normal-font-size: 1rem;
-    --small-font-size: 0.875rem;
-  }
-}
+@import url("variables.css");
 
 /*=============== BASE ===============*/
 * {
