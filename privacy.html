@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy – THE UNBURDENING</title>
+  <link rel="stylesheet" href="style.css"><!-- site‑wide -->
+  <link rel="stylesheet" href="privacy.css"><!-- this page -->
+</head>
+<body>
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo--line1">THE</span>
+        <span class="nav__logo--line2">UNBURDENING</span>
+      </a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="home.html" class="nav__link">HOME</a></li>
+          <li class="nav__item"><a href="confess.html" class="nav__link nav__link--glow-orange">CONFESS</a></li>
+          <li class="nav__item"><a href="uplift.html" class="nav__link nav__link--glow">LIGHTROOM</a></li>
+        </ul>
+        <button class="nav__close" id="nav-close" aria-label="Close menu"><i class="ri-close-line"></i></button>
+      </div>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Open menu"><i class="ri-menu-line"></i></button>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="privacy-content container">
+    <h3 class="page-heading">PRIVACY POLICY</h3>
+
+    <section id="confession-privacy">
+      <p>
+        We recognize that sharing your innermost thoughts can feel deeply personal, and we’re committed to protecting your privacy. Here’s how we handle your data when you “burn” a confession:
+      </p>
+      <ul>
+        <li><strong>No Message Storage.</strong> Your confession text is <em>never</em> recorded or retained. All inputs are processed client‑side and discarded immediately after the burn animation plays.</li>
+        <li><strong>Anonymous, Aggregate Metrics Only.</strong> We maintain a single counter for the total confessions burned and, if you opt in, anonymized demographic buckets (age group, gender, date). No PII or message content is ever stored.</li>
+        <li><strong>Purpose of Data Collection.</strong> The counter drives the “Burnt Confessions” display, and aggregate demographics power our non‑identifiable charts.</li>
+        <li><strong>Security &amp; Compliance.</strong> We use industry‑standard protections (encryption in transit, secure database rules) and never share or sell any data.</li>
+      </ul>
+      <p><em>Bottom Line:</em> When you use our Confess page, your words vanish completely from our servers—what remains is only an anonymous tally and, if you choose, a basic demographic snapshot.</p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="privacy-footer">
+    <div class="footer-inner container">
+      <p class="footer-text">&copy; 2025 THE UNBURDENING. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

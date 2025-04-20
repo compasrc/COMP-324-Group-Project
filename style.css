@@ -88,7 +88,7 @@ img {
   border-bottom: 1px solid grey;
   z-index: 100;
   padding-bottom: 0;
-  height: 70px;
+  height: 85px;
 }
 
 .nav {
@@ -106,6 +106,7 @@ img {
   letter-spacing: 3.5px;
   align-items: center;
   justify-content: center;
+  
 }
 
 .nav__logo:hover {
@@ -227,7 +228,7 @@ img {
     flex-direction: row;
     column-gap: 1rem;
     align-items: center;
-    margin-left: 200px;
+    margin-left: 220px;
     padding-top: 5px;
   }
   
@@ -288,10 +289,6 @@ img {
   color: #ff6b08 !important;
   font-weight: 700;
   animation: glowOrangeBlink 3.5s infinite !important;
-}
-
-.nav__link--glow-orange:hover {
-  color: orange;
 }
 
 
@@ -572,11 +569,11 @@ img {
 }
 
 @media (max-width: 768px) {
-  /* Same rules as before */
+  
 }
 
 @media (max-width: 480px) {
-  /* Same rules as before */
+  
 }
 
 /*=============== CONTAINER 2 ===============*/
@@ -1255,7 +1252,7 @@ footer {
 
 /* Footer Bottom */
 .footer-bottom {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .footer-bottom p {
