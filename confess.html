@@ -7,31 +7,24 @@
   <title>CONFESS</title>
   <link rel="stylesheet" href="confess.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
   <!-- Firebase modules -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
     import { getDatabase, ref, set, onValue, push, get, child } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-    
-    // Your web app's Firebase configuration
     const firebaseConfig = {
-  apiKey: "AIzaSyA4ZFt7hbFxe0wZ-iN8CeIx7QTkVLP4Av8",
-  authDomain: "the-unburdening-15fb8.firebaseapp.com",
-  databaseURL: "https://the-unburdening-15fb8-default-rtdb.firebaseio.com",
-  projectId: "the-unburdening-15fb8",
-  storageBucket: "the-unburdening-15fb8.firebasestorage.app",
-  messagingSenderId: "257855879106",
-  appId: "1:257855879106:web:1b9c8718c23b3fe67f885b",
-  measurementId: "G-98FDNN9K7Y"
-};
-    
-    // Initialize Firebase
+      apiKey: "AIzaSyA4ZFt7hbFxe0wZ-iN8CeIx7QTkVLP4Av8",
+      authDomain: "the-unburdening-15fb8.firebaseapp.com",
+      databaseURL: "https://the-unburdening-15fb8-default-rtdb.firebaseio.com",
+      projectId: "the-unburdening-15fb8",
+      storageBucket: "the-unburdening-15fb8.firebasestorage.app",
+      messagingSenderId: "257855879106",
+      appId: "1:257855879106:web:1b9c8718c23b3fe67f885b",
+      measurementId: "G-98FDNN9K7Y"
+    };
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const database = getDatabase(app);
-    
-    // Make Firebase available globally for your JS file to use
     window.firebaseApp = app;
     window.firebaseDb = database;
     window.firebaseRef = ref;
@@ -73,20 +66,14 @@
   <section class="description">
     <h2>BURN YOUR CONFESSION HERE</h2>
     <div class="description-paragraphs">
+      
       <p>Welcome to CONFESS, a digital sanctuary where your deepest thoughts and secrets can be safely released into the virtual ether. In a world where we're constantly judged and observed, this space offers true anonymity and catharsis.</p>
       
-      <p>CONFESS was created with a simple yet profound purpose: to provide a safe outlet for the burdens we all carry. Some thoughts become lighter when shared, even if only with the digital flames. Your confessions are completely anonymous - we collect only optional demographic data for statistical purposes.</p>
-      
-      <p>Studies have shown that the act of confession, even to an inanimate recipient, can provide significant psychological relief. The metaphorical burning of your words represents a powerful symbolic release from whatever weighs on your mind.</p>
-      
-      <p>As you participate, you'll also contribute to a fascinating anonymous collection of human experiences. Our charts show patterns across age groups, genders, and time - a tapestry of shared humanity that reminds us we're never truly alone in our struggles.</p>
-      
-      <p>So type your confession, hit the burn button, and watch as the weight lifts from your shoulders. No judgment, no consequences - just the therapeutic release of letting go.</p>
     </div>
   </section>
 
-  <!-- Quick‑Intro Trigger and Test Button -->
-  <section class="intro-notice">
+   <!-- Quick‑Intro Trigger and Test Button -->
+   <section class="intro-notice">
     <div class="help-tools">
       <a href="#" id="introTrigger">New here? Quick guide</a>
       <button onclick="window.testFirebaseConnection()" class="test-firebase-btn">Test Firebase</button>
@@ -98,14 +85,11 @@
     <form id="confessionForm" class="message-box" aria-labelledby="messageLabel">
       <!-- Demographics dropdowns -->
       <div class="demographics-container">
-
-       
         <div class="dropdown-group animate-dropdown">
           <label for="dateSelect">Date:</label>
           <input type="date" id="dateSelect" name="dateSelect">
           <div class="dropdown-animation"></div>
         </div>
-        
         <div class="dropdown-group animate-dropdown">
           <label for="genderSelect">Gender:</label>
           <select id="genderSelect" name="genderSelect">
@@ -119,7 +103,6 @@
           </select>
           <div class="dropdown-animation"></div>
         </div>
-        
         <div class="dropdown-group animate-dropdown">
           <label for="ageSelect">Age Group:</label>
           <select id="ageSelect" name="ageSelect">
@@ -178,15 +161,12 @@
         <canvas id="dateChart" class="chart-animation"></canvas>
       </div>
     </div>
-   
   </section>
 
   <div class="nav-container">
-    <a href="#" id="homeBtn" class="nav-button home-btn">HOME</a>
-    <a href="#" id="lighthouseBtn" class="nav-button lighthouse-btn">LIGHTROOM</a>
+    <a href="#" id="homeBtn" class="send-btn">HOME</a>
+    <a href="#" id="lighthouseBtn" class="send-btn lighthouse-btn">LIGHTROOM</a>
   </div>
-
- 
 
   <!-- Visual Elements -->
   <div class="screen-glow" aria-hidden="true"></div>

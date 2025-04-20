@@ -112,6 +112,22 @@ img {
   color: red;
 }
 
+.nav__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+.nav__logo--line1 {
+  font-size: 0.9rem;       
+  margin-bottom: 0.2rem;  
+}
+.nav__logo--line2 {
+  font-size: 1.5rem;       
+  font-weight: var(--font-bold);
+  
+}
+
 @media screen and (max-width: 1023px) {
   .nav__menu {
     position: fixed;
@@ -257,6 +273,29 @@ img {
   color: white;
 }
 
+@keyframes glowOrangeBlink {
+  0%,100% {
+    text-shadow: 0 0 5px #ff6b08, 0 0 10px #ffc107;
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 0 0 20px #ff6b08, 0 0 30px #ffc107;
+    opacity: 0.6;
+  }
+}
+
+.nav__link--glow-orange {
+  color: #ff6b08 !important;
+  font-weight: 700;
+  animation: glowOrangeBlink 3.5s infinite !important;
+}
+
+.nav__link--glow-orange:hover {
+  color: orange;
+}
+
+
+
 /*==================== BIG CONTAINER WITH IMAGE ====================*/
 .mission-container {
   position: relative;
@@ -274,6 +313,7 @@ img {
   gap: 30px;
   overflow: hidden; 
   min-height: 500px;
+  
 }
 
 .video-background {
@@ -1251,3 +1291,4 @@ footer {
       font-size: 16px; 
   }
 }
+

@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Navigation buttons
   const homeBtn = document.getElementById("homeBtn");
+  if (homeBtn) {
+    homeBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = "home.html";
+    });
+  }
   const lighthouseBtn = document.getElementById("lighthouseBtn");
 
   // Intro‑Popup Logic & Quick‑Intro Trigger
@@ -93,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.warn("Audio context creation failed:", e);
   }
 
-  // Fire-only background animation - KEEPING YOUR ORIGINAL IMPLEMENTATION
+  // Fire-only background animation 
   const glowEffect = () => {
     fireAnimation.classList.add("active");
     screenGlow.classList.add("active");
@@ -134,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Show the fire animation in the text box
     textBoxFireOverlay.style.opacity = "1";
 
-    // Use existing audioContext and track - JUST LIKE YOUR ORIGINAL
+    // Use existing audioContext and track 
     if (audioContext) {
       audioContext.resume().then(() => {
         burnSound.currentTime = 0; // restart audio from beginning
@@ -157,12 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
       textBoxFireOverlay.style.opacity = "0";
       // Reset form fields after the animation
       resetFormFields();
-    }, 1200); // Match this to your animation duration
+    }, 1200); 
 
     // Update counter
     setTimeout(() => {
       updateCounter();
-    }, 600); // Keeping your original timeout
+    }, 600); 
   }
 
   // Event listeners for burn

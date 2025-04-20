@@ -61,6 +61,12 @@ h1, h2, h3 {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+
+.nav-container .send-btn {
+  margin: 0 0.5rem; /* half‑rem on left and right */
+}
+
+
 .nav-button::before {
   content: '';
   position: absolute;
@@ -95,9 +101,21 @@ h1, h2, h3 {
 
 /* Lighthouse button specific styles */
 .lighthouse-btn {
-  background-color: #87CEFA; /* Light blue */
-  box-shadow: 0 0 15px rgba(135, 206, 250, 0.4);
+  background-color: #87CEFA !important;
+  background-image: none !important;
+  /* copy send-btn sizing */
+  padding: 0.9rem 2.5rem;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: inline-block;
+  /* match send-btn shadow */
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.4);
+  text-decoration: none;
 }
+
 
 .lighthouse-btn:hover {
   background-color: #00BFFF; /* Brighter blue on hover */
@@ -378,6 +396,10 @@ main {
 
 .send-btn:hover::after {
   opacity: 1;
+}
+
+.send-btn {
+  text-decoration: none;
 }
 
 .mic-group {
@@ -852,3 +874,6 @@ main {
     transform: scale(1);
   }
 }
+
+
+
