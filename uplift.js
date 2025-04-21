@@ -61,16 +61,33 @@ document.getElementById("close-guide").addEventListener("click", () => {
 
 window.fetchQuoteByMood = async function (mood) {
   quoteText.innerText = "Fetching magic...";
+
   if (mood === "random") {
     try {
-      const response = await fetch(API_CONFIG.url, API_CONFIG.options);
-      if (!response.ok) throw new Error("Network issue");
+      const response = await fetch("https://zenquotes.io/api/random");
+      if (!response.ok) throw new Error(`Network issue: ${response.status}`);
       const data = await response.json();
       if (!Array.isArray(data) || !data[0]) throw new Error("Invalid quote format");
       quoteText.innerText = `${data[0].q} — ${data[0].a}`;
     } catch (error) {
-      console.error("Error fetching random quote:", error);
-      quoteText.innerText = "Couldn't fetch a random quote. Try again.";
+      console.warn("API failed. Trying quotes.json instead...");
+
+      try {
+        const localResponse = await fetch("quotes.json");
+        if (!localResponse.ok) throw new Error("quotes.json not found");
+        const localData = await localResponse.json();
+
+        const quotesArray = localData.quotes || [];
+        if (!Array.isArray(quotesArray) || quotesArray.length === 0) {
+          throw new Error("Invalid quotes.json format");
+        }
+
+        const fallback = quotesArray[Math.floor(Math.random() * quotesArray.length)];
+        quoteText.innerText = `"${fallback.q}" — ${fallback.a || "Anonymous"}`;
+      } catch (jsonErr) {
+        console.error("Both API and local fetch failed:", jsonErr);
+        quoteText.innerText = "Couldn't fetch any quotes. Please try again later.";
+      }
     }
   } else {
     try {
@@ -90,6 +107,7 @@ window.fetchQuoteByMood = async function (mood) {
     }
   }
 };
+
 
 window.addEventListener("DOMContentLoaded", async () => {
   await window.fetchQuoteByMood("random");
