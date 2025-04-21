@@ -1,8 +1,8 @@
 /* Base Styles */
 :root {
-  --primary-color: #de4508; /* Updated to orange */
-  --accent-color: #ff6a00; /* Updated to a lighter orange */
-  --highlight-color: #ff8c42; /* Updated to a brighter orange */
+  --primary-color: #07753e; 
+  --accent-color: #088410; 
+  --highlight-color: #0a9b29; 
   --text-light: #E0E0E0;
   --text-dark: #CCCCCC;
   --background-dark: #000000;
