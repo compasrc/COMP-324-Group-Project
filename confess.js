@@ -532,9 +532,19 @@ messageInput.addEventListener("input", () => {
   }
 });
 
-function clearConfession() {
-  messageInput.value = "";
-  clearButton.classList.add("hidden");
-  wordCountDisplay.textContent = "0 words";
-  messageInput.focus();
-}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const statsSection = document.getElementById('statsSection');
+  const toggleStatsBtn = document.getElementById('toggleStatsBtn');
+
+  // Initially hide the stats section
+  statsSection.style.display = 'none';
+
+  toggleStatsBtn.addEventListener('click', () => {
+    const isVisible = statsSection.style.display === 'block';
+
+    statsSection.style.display = isVisible ? 'none' : 'block';
+    toggleStatsBtn.textContent = isVisible ? 'Show Statistics' : 'Hide Statistics';
+  });
+});

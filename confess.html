@@ -77,8 +77,8 @@
    <section class="intro-notice">
     <div class="help-tools">
       <a href="#" id="introTrigger">New here? Quick guide</a>
-      <button onclick="window.testFirebaseConnection()" class="test-firebase-btn">Test Firebase</button>
-    </div>
+      <!-- <button onclick="window.testFirebaseConnection()" class="test-firebase-btn">Test Firebase</button>
+    </div> -->
   </section>
 
   <!-- Message box and form -->
@@ -87,7 +87,7 @@
       <!-- Show survey button-->
       <div class="survey-notice">
         <div class="survey-text" id="showSurveyText">
-        <p>Before submitting, please consider participating in our optional survey!</p>
+        <p>Please consider participating in our optional survey!</p>
         </div>
         <button id="showSurveyBtn" type="button" class="send-btn">Participate in Survey</button>
       </div>
@@ -132,15 +132,6 @@
         <span id="wordCount" class="word-counter">0 words</span>
         <textarea id="messageInput" placeholder="Confess here..." required aria-required="true"></textarea>
         
-        <button
-          type="button"
-          id="clearButton"
-          class="clear-btn hidden"
-          onclick="clearConfession()"
-          aria-label="Clear confession text"
-        >
-          Clear Text
-        </button>
       </div>
       
       <span id="error-msg" role="alert" style="display:none; color: red;">Please enter a message.</span>
@@ -149,7 +140,7 @@
       <div class="button-row">
         <button type="submit" class="send-btn" id="burn-button">Burn</button>
         <div class="voice-block">
-          <div class="speak-label">SPEAK TO CONFESS</div>
+          <!-- <div class="speak-label">SPEAK TO CONFESS</div> -->
           <div class="mic-group">
             <button id="mic-btn" type="button" aria-label="Start voice input">🎤</button>
             <div class="language-selector">
@@ -167,6 +158,14 @@
       </div>
     </form>
   </main>
+
+  
+<!-- Stats button -->
+<div class="toggle-stats-container">
+  <button id="toggleStatsBtn" class="send-btn">Show Statistics</button>
+</div>
+
+  
 
   <!-- Stats Section -->
   <section id="statsSection" class="stats-section">
