@@ -909,8 +909,11 @@ main {
   }
   
   #burn-button {
-    padding: 1rem 1.5rem;
-    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
   }
 }
 
