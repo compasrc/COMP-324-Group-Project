@@ -85,6 +85,26 @@ document.addEventListener("DOMContentLoaded", function () {
   messageInput.parentElement.style.position = "relative";
   messageInput.parentElement.appendChild(textBoxFireOverlay);
 
+  // Create a form-wide fire overlay element
+  const formFireOverlay = document.createElement("div");
+  formFireOverlay.className = "form-fire-overlay";
+  formFireOverlay.style.position = "absolute";
+  formFireOverlay.style.top = "0";
+  formFireOverlay.style.left = "0";
+  formFireOverlay.style.width = "100%";
+  formFireOverlay.style.height = "100%";
+  formFireOverlay.style.backgroundImage = "url('fire.gif')";
+  formFireOverlay.style.backgroundSize = "cover";
+  formFireOverlay.style.backgroundPosition = "center";
+  formFireOverlay.style.opacity = "0";
+  formFireOverlay.style.pointerEvents = "none";
+  formFireOverlay.style.zIndex = "10";
+  formFireOverlay.style.transition = "opacity 0.6s ease";
+
+  // Make sure confessionForm has relative positioning to contain the overlay
+  confessionForm.style.position = "relative";
+  confessionForm.appendChild(formFireOverlay);
+  
   // Audio files for website - KEEPING ORIGINAL IMPLEMENTATION
   const burnSound = new Audio("fire.mp3");
   burnSound.volume = 0.5;
@@ -118,9 +138,15 @@ document.addEventListener("DOMContentLoaded", function () {
     genderSelect.value = ""; // Reset to default "Select" option
     ageSelect.value = ""; // Reset to default "Select" option
     dateSelect.value = ""; // Reset to default date format
+    
+    // Update word count
+    wordCountDisplay.textContent = "0 words";
+    
+    // Hide clear button
+    clearButton.classList.add("hidden");
   }
 
-  // Core burn logic - UPDATED TO INCLUDE TEXT BOX FIRE ANIMATION AND FORM RESET
+  // Core burn logic - UPDATED TO INCLUDE FORM-WIDE FIRE ANIMATION
   function burnMessage(e) {
     if (e) e.preventDefault();
     
@@ -139,8 +165,9 @@ document.addEventListener("DOMContentLoaded", function () {
       date: dateSelect.value || new Date().toISOString().split('T')[0]
     };
 
-    // Show the fire animation in the text box
+    // Show both fire animations - text box and form-wide
     textBoxFireOverlay.style.opacity = "1";
+    formFireOverlay.style.opacity = "1";
 
     // Use existing audioContext and track 
     if (audioContext) {
@@ -160,9 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Save demographic data to Firebase (no message)
     saveConfession(confessionData);
 
-    // Hide the fire animation and reset form fields after the animation completes
+    // Hide the fire animations and reset form fields after the animation completes
     setTimeout(() => {
       textBoxFireOverlay.style.opacity = "0";
+      formFireOverlay.style.opacity = "0";
       // Reset form fields after the animation
       resetFormFields();
     }, 1200); 
@@ -203,6 +231,15 @@ document.addEventListener("DOMContentLoaded", function () {
     errorMsg.style.display = "none";
   });
 
+  // Clear button functionality
+  if (clearButton) {
+    clearButton.addEventListener("click", function() {
+      messageInput.value = "";
+      wordCountDisplay.textContent = "0 words";
+      clearButton.classList.add("hidden");
+    });
+  }
+
   // 🎤 Speech-to-Text Functionality
   let recognition;
   let isListening = false;
@@ -226,6 +263,16 @@ document.addEventListener("DOMContentLoaded", function () {
       recognition.onresult = function (event) {
         const transcript = event.results[event.results.length - 1][0].transcript;
         messageInput.value += (messageInput.value ? " " : "") + transcript;
+        
+        // Update word count display
+        let text = messageInput.value.trim();
+        let words = text.split(/\s+/).length;
+        wordCountDisplay.textContent = words + (words === 1 ? " word" : " words");
+        
+        // Show clear button when there's text
+        if (text !== "") {
+          clearButton.classList.remove("hidden");
+        }
       };
 
       recognition.onerror = function (event) {
@@ -522,29 +569,34 @@ document.addEventListener("DOMContentLoaded", function () {
       showSurveyText.style.display = "none"; // hide the text
     });
   }
-});
-
-messageInput.addEventListener("input", () => {
-  if (messageInput.value.trim() !== "") {
-    clearButton.classList.remove("hidden");
-  } else {
-    clearButton.classList.add("hidden");
+  
+  const clearButton = document.getElementById("clearButton");
+  const messageInput = document.getElementById("messageInput");
+  
+  if (messageInput && clearButton) {
+    messageInput.addEventListener("input", () => {
+      if (messageInput.value.trim() !== "") {
+        clearButton.classList.remove("hidden");
+      } else {
+        clearButton.classList.add("hidden");
+      }
+    });
   }
 });
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const statsSection = document.getElementById('statsSection');
   const toggleStatsBtn = document.getElementById('toggleStatsBtn');
 
-  // Initially hide the stats section
-  statsSection.style.display = 'none';
+  if (statsSection && toggleStatsBtn) {
+    // Initially hide the stats section
+    statsSection.style.display = 'none';
 
-  toggleStatsBtn.addEventListener('click', () => {
-    const isVisible = statsSection.style.display === 'block';
+    toggleStatsBtn.addEventListener('click', () => {
+      const isVisible = statsSection.style.display === 'block';
 
-    statsSection.style.display = isVisible ? 'none' : 'block';
-    toggleStatsBtn.textContent = isVisible ? 'Show Statistics' : 'Hide Statistics';
-  });
+      statsSection.style.display = isVisible ? 'none' : 'block';
+      toggleStatsBtn.textContent = isVisible ? 'Show Statistics' : 'Hide Statistics';
+    });
+  }
 });
