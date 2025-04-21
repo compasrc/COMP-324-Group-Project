@@ -8,11 +8,17 @@ const NavigationModule = (() => {
     const navClose = document.getElementById('nav-close');
 
     if (navToggle) {
-      navToggle.addEventListener('click', () => navMenu.classList.add('show-menu'));
+      navToggle.addEventListener('click', () => {
+        console.log('Toggle clicked');
+        navMenu.classList.add('show-menu');
+      });
     }
 
     if (navClose) {
-      navClose.addEventListener('click', () => navMenu.classList.remove('show-menu'));
+      navClose.addEventListener('click', () => {
+        console.log('Close clicked');
+        navMenu.classList.remove('show-menu');
+      });
     }
 
     const navLinks = document.querySelectorAll('.nav__link');
@@ -22,6 +28,29 @@ const NavigationModule = (() => {
 
   return { init: initNavigation };
 })();
+
+// Other modules remain the same...
+
+/**
+ * Initialize all modules when DOM is ready
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    NavigationModule.init();
+    VideoModule.initBackgroundVideo();
+    // Remove reference to non-existent ContactFormModule
+    // ContactFormModule.init(); 
+    YouTubeModule.init();
+    AnimationModule.init();
+    
+    // Add this debugging to check elements
+    console.log('Nav menu element:', document.getElementById('nav-menu'));
+    console.log('Nav toggle element:', document.getElementById('nav-toggle'));
+    console.log('Nav close element:', document.getElementById('nav-close'));
+  } catch (error) {
+    console.error('Initialization error:', error);
+  }
+});
 
 /**
  * Video Player Functionality
