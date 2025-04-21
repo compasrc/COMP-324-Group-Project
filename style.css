@@ -1119,6 +1119,7 @@ img {
   }
 }
 
+
 /*=============== FOOTER ===============*/
 
 footer {
@@ -1134,12 +1135,14 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+  padding-left: 20px; 
 }
 
 .contact-details {
   flex: 1;
   max-width: 500px;
   margin-right: 40px;
+  padding-left: 15px; 
 }
 
 .contact-details h2 {
@@ -1183,6 +1186,7 @@ footer {
 .website-info {
   flex: 1;
   max-width: 5000px;
+  padding-left: 15px; 
 }
 
 .website-info h2 {
@@ -1226,12 +1230,25 @@ footer {
   .footer-content {
     flex-direction: column;
     text-align: center;
+    padding-left: 0; 
   }
 
   .contact-details,
   .website-info {
     max-width: 100%;
-    margin-bottom: 20px;
+    margin: 0 auto 30px;
+    padding: 0 15px;
+  }
+
+  .contact-details {
+    margin-right: 0;  
+  }
+
+  .website-info ul {
+    padding: 0;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
   }
 
   .contact-details input,
@@ -1248,4 +1265,3 @@ footer {
     font-size: 16px;
   }
 }
-
