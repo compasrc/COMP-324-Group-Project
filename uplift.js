@@ -112,3 +112,29 @@ window.fetchQuoteByMood = async function (mood) {
 window.addEventListener("DOMContentLoaded", async () => {
   await window.fetchQuoteByMood("random");
 });
+
+const calmVideos = [
+  { title: "Deep Sleep Rainstorm", id: "yIQd2Ya0Ziw" },
+  { title: "Calming Green Noise", id: "xfBgJEVxQz8" },
+  { title: "Ambient Library Rainstorm", id: "CHFif_y2TyM" },
+  { title: "Cozy Cabin Thunderstorm", id: "L2D8e0FYc-E" }
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  const selector = document.getElementById("videoSelector");
+  const player = document.getElementById("calmingVideo");
+
+  if (selector && player) {
+    calmVideos.forEach(video => {
+      const option = document.createElement("option");
+      option.value = video.id;
+      option.textContent = video.title;
+      selector.appendChild(option);
+    });
+
+    selector.addEventListener("change", () => {
+      const videoId = selector.value;
+      player.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1`;
+    });
+  }
+});

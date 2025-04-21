@@ -70,6 +70,24 @@
     </footer>
   </main>
 
+  <section class="calm-video-section" aria-labelledby="calm-heading">
+    <h2 class="calm-heading" id="calm-heading">Ambient Sounds</h2>
+    <p class="calm-subtext">Still can't find your peace? Try some calming sounds to help you breathe easier:</p>
+  
+    <div class="calm-video-select-wrapper">
+      <label for="videoSelector" class="visually-hidden">Select calming video</label>
+      <select id="videoSelector" class="calm-selector" aria-label="Choose a relaxing video">
+        <option disabled selected>Select an ambient sound</option>
+      </select>
+    </div>
+  
+    <div class="calm-video-wrapper">
+      <iframe id="calmingVideo" class="calm-iframe" title="Calming ambient video" allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
+    </div>
+  </section>
+
   <script type="module" src="uplift.js"></script>
 </body>
 </html>
