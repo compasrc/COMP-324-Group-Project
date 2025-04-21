@@ -39,56 +39,64 @@ const VideoModule = (() => {
   return { initBackgroundVideo };
 })();
 
-/**
- * Contact Form Module
- */
-const ContactFormModule = (() => {
-  const handleFormSubmit = event => {
-    event.preventDefault();
+//contact-form//
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  const successMessage = document.getElementById('form-success');
+  const errorMessage = document.getElementById('form-error');
 
-    const form = document.getElementById('contact-form');
-    const successMessage = document.getElementById('form-success');
-    
-    const name = form.querySelector('[name="name"]').value;
-    const email = form.querySelector('[name="email"]').value;
-    const message = form.querySelector('[name="message"]').value;
-    
-    if (!name || !email || !message) {
-      alert('Please fill all fields');
-      return;
-    }
-    
-    successMessage.style.display = 'block';
-    
-    setTimeout(() => {
-      form.reset();
-    }, 100);
-    
-    setTimeout(() => {
-      successMessage.style.display = 'none';
-    }, 5000);
-    
-    // Server submission code would go here in production
-  };
-
-  const initContactForm = () => {
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', handleFormSubmit);
+  // Form submission handler
+  form.addEventListener('submit', function(event) {
+      event.preventDefault();
       
-      let successMsg = document.getElementById('form-success');
-      if (!successMsg) {
-        successMsg = document.createElement('div');
-        successMsg.id = 'form-success';
-        successMsg.textContent = 'Thank you! Your message has been sent successfully.';
-        successMsg.style.display = 'none';
-        contactForm.appendChild(successMsg);
-      }
-    }
-  };
-
-  return { init: initContactForm };
-})();
+      // Hide any previous messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      const formData = new FormData(form);
+      
+      fetch(form.action, {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              // Clear the form fields
+              form.reset();
+              
+              // Show success message
+              successMessage.style.display = 'block';
+              
+              // Auto-hide success message after 5 seconds
+              setTimeout(function() {
+                  successMessage.style.display = 'none';
+              }, 5000);
+          } else {
+              // Show error message
+              errorMessage.style.display = 'block';
+              
+              // Auto-hide error message after 5 seconds
+              setTimeout(function() {
+                  errorMessage.style.display = 'none';
+              }, 5000);
+              
+              console.error('Form submission error:', data);
+          }
+      })
+      .catch(error => {
+          // Show error message
+          errorMessage.style.display = 'block';
+          
+          // Auto-hide error message after 5 seconds
+          setTimeout(function() {
+              errorMessage.style.display = 'none';
+          }, 5000);
+          
+          console.error('Form submission error:', error);
+      });
+  });
+});
 
 /**
  * YouTube Video Module
