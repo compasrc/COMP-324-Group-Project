@@ -29,29 +29,6 @@ const NavigationModule = (() => {
   return { init: initNavigation };
 })();
 
-// Other modules remain the same...
-
-/**
- * Initialize all modules when DOM is ready
- */
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    NavigationModule.init();
-    VideoModule.initBackgroundVideo();
-    // Remove reference to non-existent ContactFormModule
-    // ContactFormModule.init(); 
-    YouTubeModule.init();
-    AnimationModule.init();
-    
-    // Add this debugging to check elements
-    console.log('Nav menu element:', document.getElementById('nav-menu'));
-    console.log('Nav toggle element:', document.getElementById('nav-toggle'));
-    console.log('Nav close element:', document.getElementById('nav-close'));
-  } catch (error) {
-    console.error('Initialization error:', error);
-  }
-});
-
 /**
  * Video Player Functionality
  */
@@ -68,64 +45,116 @@ const VideoModule = (() => {
   return { initBackgroundVideo };
 })();
 
-//contact-form//
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contact-form');
-  const successMessage = document.getElementById('form-success');
-  const errorMessage = document.getElementById('form-error');
+/**
+ * Contact Form Module
+ */
+const ContactFormModule = (() => {
+  const init = () => {
+    const form = document.getElementById('contact-form');
+    if (!form) {
+      console.log('Contact form not found');
+      return;
+    }
+    
+    const successMessage = document.getElementById('form-success');
+    const errorMessage = document.getElementById('form-error');
+    const submitButton = document.getElementById('submit-button');
 
-  // Form submission handler
-  form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Hide any previous messages
-      successMessage.style.display = 'none';
-      errorMessage.style.display = 'none';
-      
-      const formData = new FormData(form);
-      
-      fetch(form.action, {
-          method: 'POST',
-          body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.success) {
-              // Clear the form fields
-              form.reset();
-              
-              // Show success message
-              successMessage.style.display = 'block';
-              
-              // Auto-hide success message after 5 seconds
-              setTimeout(function() {
-                  successMessage.style.display = 'none';
-              }, 5000);
-          } else {
-              // Show error message
-              errorMessage.style.display = 'block';
-              
-              // Auto-hide error message after 5 seconds
-              setTimeout(function() {
-                  errorMessage.style.display = 'none';
-              }, 5000);
-              
-              console.error('Form submission error:', data);
-          }
-      })
-      .catch(error => {
-          // Show error message
-          errorMessage.style.display = 'block';
-          
-          // Auto-hide error message after 5 seconds
-          setTimeout(function() {
-              errorMessage.style.display = 'none';
-          }, 5000);
-          
-          console.error('Form submission error:', error);
-      });
-  });
-});
+    console.log('Contact form initialized');
+
+    // Form submission handler
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Form submission started');
+        
+        // Disable button to prevent multiple submissions
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+        
+        // Hide any previous messages
+        if (successMessage) successMessage.style.display = 'none';
+        if (errorMessage) errorMessage.style.display = 'none';
+        
+        // Get form data directly instead of using FormData
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const accessKey = form.querySelector('input[name="access_key"]').value;
+        
+        // Create payload object
+        const payload = {
+            access_key: accessKey,
+            name: name,
+            email: email,
+            message: message
+        };
+        
+        console.log('Sending form data:', JSON.stringify(payload));
+        
+        // Use fetch with JSON payload instead of FormData
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            console.log('Response status:', response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Form submission response:', data);
+            
+            if (data.success) {
+                // Clear the form fields
+                form.reset();
+                
+                // Show success message
+                if (successMessage) successMessage.style.display = 'block';
+                
+                // Auto-hide success message after 5 seconds
+                setTimeout(function() {
+                    if (successMessage) successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                // Show error message
+                if (errorMessage) errorMessage.style.display = 'block';
+                
+                // Auto-hide error message after 5 seconds
+                setTimeout(function() {
+                    if (errorMessage) errorMessage.style.display = 'none';
+                }, 5000);
+                
+                console.error('Form submission error:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Form submission error:', error);
+            
+            // Show error message
+            if (errorMessage) errorMessage.style.display = 'block';
+            
+            // Auto-hide error message after 5 seconds
+            setTimeout(function() {
+                if (errorMessage) errorMessage.style.display = 'none';
+            }, 5000);
+        })
+        .finally(() => {
+            // Re-enable the submit button
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit';
+            }
+        });
+    });
+  };
+
+  return { init };
+})();
 
 /**
  * YouTube Video Module - Fixed for Mobile
@@ -512,11 +541,6 @@ const YouTubeModule = (() => {
   };
 })();
 
-// Initialize the module when the DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  YouTubeModule.init();
-});S
-
 /**
  * Animation Module
  */
@@ -652,9 +676,10 @@ window.onYouTubeIframeAPIReady = function() {
  */
 document.addEventListener('DOMContentLoaded', () => {
   try {
+    console.log('DOM loaded - initializing modules');
     NavigationModule.init();
     VideoModule.initBackgroundVideo();
-    ContactFormModule.init();
+    ContactFormModule.init(); // Now properly defined
     YouTubeModule.init();
     AnimationModule.init();
   } catch (error) {
