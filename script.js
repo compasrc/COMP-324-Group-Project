@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * YouTube Video Module
+ * YouTube Video Module - Fixed for Mobile
  */
 const YouTubeModule = (() => {
   // Module state
@@ -315,23 +315,46 @@ const YouTubeModule = (() => {
       currentSlide.style.opacity = '1';
       currentSlide.style.transform = 'scale(1)';
     }, 50);
+    
+    console.log('Showing slide', index);
   };
 
   const initRecommendedVideos = () => {
-    const prevBtn = document.querySelector('.rec-button-prev');
-    const nextBtn = document.querySelector('.rec-button-next');
+    // Fix: Setup navigation buttons properly for both desktop and mobile
+    const setupNavButtons = () => {
+      const prevBtn = document.querySelector('.rec-button-prev');
+      const nextBtn = document.querySelector('.rec-button-next');
+      
+      // Remove any existing event listeners (important for mobile)
+      if (prevBtn) {
+        const newPrevBtn = prevBtn.cloneNode(true);
+        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+        
+        // Add new listener
+        newPrevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Previous button clicked');
+          showSlide(state.currentSlideIndex - 1);
+        });
+      }
+      
+      if (nextBtn) {
+        const newNextBtn = nextBtn.cloneNode(true);
+        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+        
+        // Add new listener
+        newNextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Next button clicked');
+          showSlide(state.currentSlideIndex + 1);
+        });
+      }
+    };
     
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        showSlide(state.currentSlideIndex - 1);
-      });
-    }
-    
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        showSlide(state.currentSlideIndex + 1);
-      });
-    }
+    // Setup buttons
+    setupNavButtons();
     
     // Add special handling for mobile devices
     if (state.isMobile) {
@@ -360,6 +383,13 @@ const YouTubeModule = (() => {
         }, { passive: true });
       }
       
+      // Fixed mobile navigation buttons implementation
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          setupNavButtons();
+        }, 500);
+      });
+      
       // Add specific touch handlers for iOS
       if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         document.addEventListener('touchstart', () => {
@@ -371,6 +401,13 @@ const YouTubeModule = (() => {
     
     // Show first slide initially
     showSlide(0);
+    
+    // Fix for buttons after window load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        setupNavButtons();
+      }, 1000);
+    });
   };
 
   const setupScrollHandler = () => {
@@ -404,9 +441,19 @@ const YouTubeModule = (() => {
   return {
     init: () => {
       loadAPI();
-      initRecommendedVideos();
-      setupScrollHandler();
-      handleWindowResize();
+      
+      // Wait for DOM content to be fully loaded
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          initRecommendedVideos();
+          setupScrollHandler();
+          handleWindowResize();
+        });
+      } else {
+        initRecommendedVideos();
+        setupScrollHandler();
+        handleWindowResize();
+      }
       
       // Force video load if on mobile
       if (state.isMobile) {
@@ -416,12 +463,30 @@ const YouTubeModule = (() => {
           }
         }, { passive: true, once: true });
       }
+      
+      // Load YouTube API when window is loaded
+      window.addEventListener('load', () => {
+        if (typeof YT !== 'undefined' && YT.Player) {
+          initializePlayers();
+        } else {
+          loadAPI();
+          // YouTube API will call onYouTubeIframeAPIReady
+          window.onYouTubeIframeAPIReady = function() {
+            initializePlayers();
+          };
+        }
+      });
     },
     showSlide,
     pauseAllVideos,
     reloadAllPlayers
   };
 })();
+
+// Initialize the module when the DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  YouTubeModule.init();
+});S
 
 /**
  * Animation Module
