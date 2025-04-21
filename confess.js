@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const counterSpan = document.getElementById("counter");
   const confessionForm = document.getElementById("confessionForm");
   const errorMsg = document.getElementById("error-msg");
+  const clearButton = document.getElementById("clearButton");
+  const wordCountDisplay = document.getElementById("wordCount");
   
   // Form elements to reset
   const genderSelect = document.getElementById("genderSelect");
@@ -181,6 +183,21 @@ document.addEventListener("DOMContentLoaded", function () {
       burnMessage();
     }
   });
+
+  messageInput.addEventListener("input", function() {
+    let text = messageInput.value.trim();
+
+    if(text === "") {
+      wordCountDisplay.textContent = "0 words";
+      clearButton.classList.add("hidden");
+      return;
+    }
+    let words = text.split(/\s+/).length;
+    wordCountDisplay.textContent = words + (words === 1 ? " word" : " words");
+  
+    // Show the clear button
+    clearButton.classList.remove("hidden");
+  })
   
   messageInput.addEventListener("focus", () => {
     errorMsg.style.display = "none";
@@ -506,3 +523,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+messageInput.addEventListener("input", () => {
+  if (messageInput.value.trim() !== "") {
+    clearButton.classList.remove("hidden");
+  } else {
+    clearButton.classList.add("hidden");
+  }
+});
+
+function clearConfession() {
+  messageInput.value = "";
+  clearButton.classList.add("hidden");
+  wordCountDisplay.textContent = "0 words";
+  messageInput.focus();
+}

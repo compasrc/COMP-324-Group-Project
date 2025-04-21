@@ -128,9 +128,24 @@
         </div>
       </div>
 
-      <textarea id="messageInput" placeholder="Confess here..." required aria-required="true"></textarea>
+      <div class="message-wrapper">
+        <span id="wordCount" class="word-counter">0 words</span>
+        <textarea id="messageInput" placeholder="Confess here..." required aria-required="true"></textarea>
+        
+        <button
+          type="button"
+          id="clearButton"
+          class="clear-btn hidden"
+          onclick="clearConfession()"
+          aria-label="Clear confession text"
+        >
+          Clear Text
+        </button>
+      </div>
+      
       <span id="error-msg" role="alert" style="display:none; color: red;">Please enter a message.</span>
-
+     
+      
       <div class="button-row">
         <button type="submit" class="send-btn" id="burn-button">Burn</button>
         <div class="voice-block">
