@@ -348,33 +348,6 @@ main {
   
 }
 
-.clear-btn {
-    position: absolute;
-    bottom: 1.5rem; /* raised slightly */
-    right: 1.2rem;  /* nudge to align with padding */
-    background-color: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 0.4rem 0.9rem; /* slightly smaller */
-    font-size: 0.85rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    z-index: 10;
-}
-
-.word-counter {
-  position: absolute;
-  top: -1.6rem;
-  right: 0.5rem;
-  color: white;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.clear-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
 
 .hidden {
   display: none;
