@@ -92,7 +92,7 @@ a { text-decoration: none; color: inherit; }
 }
 .hero__title {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 750;
   color: var(--color-navbar);
 }
 .hero__subtitle {
@@ -100,6 +100,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--color-text-light);
   max-width: 600px;
   margin: 0 auto;
+  margin-top: .375rem;
 }
 
 /* QUOTE SECTION */
