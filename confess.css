@@ -373,7 +373,7 @@ main {
 #burn-button {
   background: linear-gradient(45deg, #ff4500, #ff6347);
   color: white;
-  padding: 1rem 2.0rem;
+  padding: 1rem 6rem;
   border-radius: 50px;
   border: none;
   font-weight: bold;
@@ -868,6 +868,11 @@ main {
     padding: 10px 20px;
     font-size: 16px;
     margin: 0 8px;
+  }
+  
+  #burn-button {
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
   }
 }
 
