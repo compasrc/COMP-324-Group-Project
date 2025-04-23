@@ -130,7 +130,8 @@
 
       <div class="message-wrapper">
         <textarea id="messageInput" placeholder="Confess here..." required aria-required="true"></textarea>
-        
+        <span id ="wordCount" class="wordCounter">0 words</span>
+        <button type="button" id="clearButton" class="clearButtonHide" onclick="clearConfession()" aria-label="Clear Confession Box">Clear Text</button>
       </div>
       
       <span id="error-msg" role="alert" style="display:none; color: red;">Please enter a message.</span>
