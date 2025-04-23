@@ -342,10 +342,30 @@ main {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/*Clear Button / Word Counter Text*/
 .message-wrapper {
   position: relative;
   width: 100%;
+  margin-bottom:4rem;
   
+}
+
+.clear-button{
+  position: absolute;
+  top: 100%;
+  right:0;
+  font-size:1.7rem;
+  padding: 1rem, 2.2rem;
+}
+
+.word-counter{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 1.2;
+  font-size:.95rem;
+  color:white;
+  opacity: .9;
 }
 
 

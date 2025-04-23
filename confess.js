@@ -570,6 +570,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   
+  //Clear Button
   const clearButton = document.getElementById("clearButton");
   const messageInput = document.getElementById("messageInput");
   
