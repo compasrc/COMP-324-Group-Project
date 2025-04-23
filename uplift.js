@@ -113,6 +113,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   await window.fetchQuoteByMood("random");
 });
 
+//Ambient Audio/Noise Videos
 const calmVideos = [
   { title: "Deep Sleep Rainstorm", id: "yIQd2Ya0Ziw" },
   { title: "Calming Green Noise", id: "xfBgJEVxQz8" },
@@ -132,9 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
       selector.appendChild(option);
     });
 
+    //Handle Video Not Loading with Error Message
     selector.addEventListener("change", () => {
       const videoId = selector.value;
-      player.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1`;
+      const errorMess = document.getElementById("videoLoadError");
+      player.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&mute=1`;
+      
+      //Timeout and check if video loaded or not
+      setTimeout(() => {
+        if(!player.contentWindow){
+          errorMess.style.display = "block"
+        }
+      }, 5000);
     });
   }
 });

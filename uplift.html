@@ -70,6 +70,8 @@
     </footer>
   </main>
 
+
+  <!--Code for Ambient Video Selector-->
   <section class="calm-video-section" aria-labelledby="calm-heading">
     <h2 class="calm-heading" id="calm-heading">Ambient Sounds</h2>
     <p class="calm-subtext">Still can't find your peace? Try some calming sounds to help you breathe easier:</p>
@@ -77,7 +79,7 @@
     <div class="calm-video-select-wrapper">
       <label for="videoSelector" class="visually-hidden">Select calming video</label>
       <select id="videoSelector" class="calm-selector" aria-label="Choose a relaxing video">
-        <option disabled selected>Select an ambient sound</option>
+        <option disabled selected hidden>Select an ambient sound</option>
       </select>
     </div>
   
@@ -85,6 +87,9 @@
       <iframe id="calmingVideo" class="calm-iframe" title="Calming ambient video" allowfullscreen
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
       </iframe>
+      <p id = "videoLoadError" style="display: none; color: var(--color-accent); margin-top: 1rem;">
+        Sorry, this video could not be loaded, please try another!
+      </p>
     </div>
   </section>
 
