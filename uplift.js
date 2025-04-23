@@ -137,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     selector.addEventListener("change", () => {
       const videoId = selector.value;
       const errorMess = document.getElementById("videoLoadError");
+      errorMess.style.display = "none"; //hide error message before video is loaded
       player.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1&mute=1`;
       
       //Timeout and check if video loaded or not

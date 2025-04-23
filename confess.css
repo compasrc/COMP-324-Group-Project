@@ -931,6 +931,22 @@ main {
     max-width: 300px;
     margin: 0 auto;
   }
+
+  .clear-button{
+    font-size:1.2rem; 
+    padding: .6rem 1.2rem; 
+    right: 0;
+  }
+
+  .word-counter{
+    font-size: .85rem; 
+    margin-top:.85rem
+  }
+
+  .message-wrapper{
+    margin-bottom: 3rem;
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -973,6 +989,21 @@ main {
     width: 80%;
     padding: 12px 15px;
     margin: 0;
+  }
+
+  .clear-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    right: 0;
+  }
+
+  .word-counter {
+    font-size: 0.75rem;
+    margin-top: 0.6rem;
+  }
+
+  .message-wrapper {
+    margin-bottom: 2.5rem;
   }
 }
 
